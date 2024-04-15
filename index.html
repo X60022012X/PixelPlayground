@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="./styles/generel.css">
+  <link rel="stylesheet" href="./styles/account-page.css">
+  <link rel="stylesheet" href="./styles/inner-page.css">
+</head>
+<body>
+  <div class="accountPage">
+    <div class="createAccount">
+      <div class="introAccountPage">
+        <h1 class="introTitleAccountPage">
+          Welcome to PixelPlayground
+        </h1>
+        <p class="introTextAccountPage">
+          Welcome to PixelPlayground, where pixels come to play and gamers unite! Your ultimate destination for pixelated fun! Immerse yourself in a world of endless adventure, strategy, and excitement. With a diverse collection of games crafted with love and nostalgia, there's something for every gamer here. Join us as we explore the digital playground where pixels reign supreme. Welcome to PixelPlayground, where the games never end and memories are made!
+        </p>
+      </div>
+      <div class="signInSide">
+        <h1 class="signInTitle">Create Account</h1>
+        <div class="accountPageInputArea">
+        
+          <label class="accountPageInputLable">
+            <span class="inputInfoAccountPage">Email</span>
+            <input type="email" id="createEmail" class="createEmail" name="email" autocomplete="off" placeholder="&#xf003">
+          </label>
+          <div class="alert_area createEmailAlertEmpty">
+            <img src="./pictures/alert.png" class="alert_picture">
+            <div class="error_measage_text_div">
+              <p class="error_measage_text">You have to fill out this field!</p>
+              <p class="error_measage_text">Please try again!</p>
+            </div>
+          </div>
+          <div class="alert_area createEmailAlertLength">
+            <img src="./pictures/alert.png" class="alert_picture">
+            <div class="error_measage_text_div">
+              <p class="error_measage_text">Email has to contain at least 8 characters!</p>
+              <p class="error_measage_text">Please try again!</p>
+            </div>
+          </div>
+          <div class="alert_area createEmailAlertInUse">
+            <img src="./pictures/alert.png" class="alert_picture">
+            <div class="error_measage_text_div">
+              <p class="error_measage_text">Email is already in use!</p>
+              <p class="error_measage_text">Please try again!</p>
+            </div>
+          </div>
+          <div class="alert_area createEmailAlertUnknown">
+            <img src="./pictures/alert.png" class="alert_picture">
+            <div class="error_measage_text_div">
+              <p class="error_measage_text">Unknown error has appeard!</p>
+              <p class="error_measage_text">Please try again later!</p>
+            </div>
+          </div>
+          <div class="alert_area createEmailAlertInvalid">
+            <img src="./pictures/alert.png" class="alert_picture">
+            <div class="error_measage_text_div">
+              <p class="error_measage_text">Email is invalid!</p>
+              <p class="error_measage_text">Please try again!</p>
+            </div>
+          </div>
+
+          <label class="accountPageInputLable">
+            <span class="inputInfoAccountPage">Username</span>
+            <input type="text" id="createUsername" class="createUsername" name="username" autocomplete="off" placeholder="&#xf2c0">
+          </label>
+          <div class="alert_area createUsernameAlertEmpty">
+            <img src="./pictures/alert.png" class="alert_picture">
+            <div class="error_measage_text_div">
+              <p class="error_measage_text">You have to fill out this field!</p>
+              <p class="error_measage_text">Please try again!</p>
+            </div>
+          </div>
+          <div class="alert_area createUsernameAlertLength">
+            <img src="./pictures/alert.png" class="alert_picture">
+            <div class="error_measage_text_div">
+              <p class="error_measage_text">Username has to contain at least 8 characters!</p>
+              <p class="error_measage_text">Please try again!</p>
+            </div>
+          </div>
+          <div class="alert_area createUsernameAlertUnknown">
+            <img src="./pictures/alert.png" class="alert_picture">
+            <div class="error_measage_text_div">
+              <p class="error_measage_text">Unknown error has appeard!</p>
+              <p class="error_measage_text">Please try again later!</p>
+            </div>
+          </div>
+
+          <label class="accountPageInputLable">
+            <span class="inputInfoAccountPage">Password</span>
+            <input type="password" id="createPassword" class="createPassword" name="password" autocomplete="new-password" placeholder="&#xf023">
+          </label>
+          <div class="alert_area createPasswordAlertEmpty">
+            <img src="./pictures/alert.png" class="alert_picture">
+            <div class="error_measage_text_div">
+              <p class="error_measage_text">You have to fill out this field!</p>
+              <p class="error_measage_text">Please try again!</p>
+            </div>
+          </div>
+          <div class="alert_area createPasswordAlertLength">
+            <img src="./pictures/alert.png" class="alert_picture">
+            <div class="error_measage_text_div">
+              <p class="error_measage_text">Password has to contain at least 8 characters!</p>
+              <p class="error_measage_text">Please try again!</p>
+            </div>
+          </div>
+          <div class="alert_area createPasswordAlertEqual">
+            <img src="./pictures/alert.png" class="alert_picture">
+            <div class="error_measage_text_div">
+              <p class="error_measage_text">Password fields have to correspond!</p>
+              <p class="error_measage_text">Please try again!</p>
+            </div>
+          </div>
+          <div class="alert_area createPasswordAlertUnknown">
+            <img src="./pictures/alert.png" class="alert_picture">
+            <div class="error_measage_text_div">
+              <p class="error_measage_text">Unknown error has appeard!</p>
+              <p class="error_measage_text">Please try again later!</p>
+            </div>
+          </div>
+
+          <label class="accountPageInputLable">
+            <span class="inputInfoAccountPage">Confirm Password</span>
+            <input type="password" id="confirmCreatePassword" class="confirmCreatePassword" name="password" placeholder="&#xf023">
+          </label>
+          <div class="alert_area confirmCreatePasswordAlertEmpty">
+            <img src="./pictures/alert.png" class="alert_picture">
+            <div class="error_measage_text_div">
+              <p class="error_measage_text">You have to fill out this field!</p>
+              <p class="error_measage_text">Please try again!</p>
+            </div>
+          </div>
+          <div class="alert_area confirmCreatePasswordAlertLength">
+            <img src="./pictures/alert.png" class="alert_picture">
+            <div class="error_measage_text_div">
+              <p class="error_measage_text">Password has to contain at least 8 characters!</p>
+              <p class="error_measage_text">Please try again!</p>
+            </div>
+          </div>
+          <div class="alert_area confirmCreatePasswordAlertEqual">
+            <img src="./pictures/alert.png" class="alert_picture">
+            <div class="error_measage_text_div">
+              <p class="error_measage_text">Password fields have to correspond!</p>
+              <p class="error_measage_text">Please try again!</p>
+            </div>
+          </div>
+          <div class="alert_area confirmCreatePasswordAlertUnknown">
+            <img src="./pictures/alert.png" class="alert_picture">
+            <div class="error_measage_text_div">
+              <p class="error_measage_text">Unknown error has appeard!</p>
+              <p class="error_measage_text">Please try again later!</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="accountPageButtonLine">
+          <button class="accountPageMainButton createAccountButton">Create</button>
+          <button class="accountPageSecondButton goToLogin">Login</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="loggin">
+      <div class="introAccountPage">
+        <h1 class="introTitleAccountPage">
+          Welcome to PixelPlayground
+        </h1>
+        <p class="introTextAccountPage">
+          Welcome to PixelPlayground, where pixels come to play and gamers unite! Your ultimate destination for pixelated fun! Immerse yourself in a world of endless adventure, strategy, and excitement. With a diverse collection of games crafted with love and nostalgia, there's something for every gamer here. Join us as we explore the digital playground where pixels reign supreme. Welcome to PixelPlayground, where the games never end and memories are made!
+        </p>
+      </div>
+
+      <div class="loginSide">
+        <h1 class="loginTitle">User Login</h1>
+        <div class="accountPageInputArea">
+          <label class="accountPageInputLable">
+            <span class="inputInfoAccountPage">Email</span>
+            <input type="email" id="loggEmail" class="loggEmail" name="email" autocomplete="off" placeholder="&#xf003">
+          </label>
+          <div class="alert_area loggEmailAlertEmpty">
+            <img src="./pictures/alert.png" class="alert_picture">
+            <div class="error_measage_text_div">
+              <p class="error_measage_text">You have to fill out this field!</p>
+              <p class="error_measage_text">Please try again!</p>
+            </div>
+          </div>
+          <div class="alert_area loggEmailAlertWrong">
+            <img src="./pictures/alert.png" class="alert_picture">
+            <div class="error_measage_text_div">
+              <p class="error_measage_text">Your email or password are incorrect!</p>
+              <p class="error_measage_text">Please try again!</p>
+            </div>
+          </div>
+          <div class="alert_area loggEmailAlertUnknown">
+            <img src="./pictures/alert.png" class="alert_picture">
+            <div class="error_measage_text_div">
+              <p class="error_measage_text">Unknown error has appeard!</p>
+              <p class="error_measage_text">Please try again later!</p>
+            </div>
+          </div>
+
+          <label class="accountPageInputLable">
+            <span class="inputInfoAccountPage">Password</span>
+            <input type="password" id="loggPassword" class="loggPassword" name="password" placeholder="&#xf023">
+          </label>
+          <div class="alert_area loggPasswordAlertEmpty">
+            <img src="./pictures/alert.png" class="alert_picture">
+            <div class="error_measage_text_div">
+              <p class="error_measage_text">You have to fill out this field!</p>
+              <p class="error_measage_text">Please try again!</p>
+            </div>
+          </div>
+          <div class="alert_area loggPasswordAlertWrong">
+            <img src="./pictures/alert.png" class="alert_picture">
+            <div class="error_measage_text_div">
+              <p class="error_measage_text">Your email or password are incorrect!</p>
+              <p class="error_measage_text">Please try again!</p>
+            </div>
+          </div>
+          <div class="alert_area loggPasswordAlertUnknown">
+            <img src="./pictures/alert.png" class="alert_picture">
+            <div class="error_measage_text_div">
+              <p class="error_measage_text">Unknown error has appeard!</p>
+              <p class="error_measage_text">Please try again later!</p>
+            </div>
+          </div>
+        </div>
+        <div class="accountPageButtonLine">
+          <button class="accountPageMainButton loggIntoAccount">Login</button>
+          <button class="accountPageSecondButton goToSignup">Sign up</button> 
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="innerPage">
+    <div>
+      <div class="navbar">
+        <div class="navbarLeft">
+          <button class="playButton">
+            <i class="fa-solid fa-play"></i>
+            <p class="navbarOptionText">Play</p>
+          </button>
+          <button class="pauseButton">
+            <i class="fa-solid fa-pause"></i>
+            <p class="navbarOptionText">Pause</p>
+          </button>
+        </div>
+        <div class="navbarRight">
+          <button class="leaderButton">
+            <i class="fa-solid fa-list-ol"></i>
+            <p class="navbarOptionText">Leaderboard</p>
+          </button>
+          <button class="sourceButton">
+            <i class="fa-solid fa-list-ul"></i>
+            <p class="navbarOptionText">Sources</p>
+          </button>
+          <button class="loggOutButton">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            <p class="navbarOptionText">Logout</p>
+          </button>
+          <button class="accountButton">
+            <i class="fa-regular fa-circle-user"></i>
+            <p class="navbarOptionText">Account</p>
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+    <div>
+      <input class="testScore" placeholder="Score">
+      <button class="testSubmit">Submit</button>
+    </div>
+
+    <div class="leaderboardAccountModal">
+      <div class="leaderAccountModalContent">
+        <div>
+          <div class="accountTitleLine">
+            <p class="accountTitle">Leaderbord</p>
+            <button class="closeLeaderboardAccountModal">
+              <i class="fa-regular fa-circle-xmark"></i>
+            </button>
+          </div>
+          <div class="leaderboardUsersTableModal">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sourceAccountModal">
+      <div class="accountModalContent">
+        <div>
+          <div class="accountTitleLine">
+            <p class="accountTitle">Sources</p>
+            <button class="closeSourceAccountModal">
+              <i class="fa-regular fa-circle-xmark"></i>
+            </button>
+          </div>
+          <div class="sourceCodeArea">
+            <p class="sourceTitle">Code source:</p>
+            <div class="sourceList">
+              <p class="soruceInfo soruceInfoExplanation">Used for:</p>
+              <p class="soruceInfo soruceInfoExplanation">Link to code:</p>
+              <p class="soruceInfo">Hdghskshsd</p>
+              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+              <p class="soruceInfo">Hdghskshsd</p>
+              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+              <p class="soruceInfo">Hdghskshsd</p>
+              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+              <p class="soruceInfo">Hdghskshsd</p>
+              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+              <p class="soruceInfo">Hdghskshsd</p>
+              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+              <p class="soruceInfo">Hdghskshsd</p>
+              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+              <p class="soruceInfo">Hdghskshsd</p>
+              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+              <p class="soruceInfo">Hdghskshsd</p>
+              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+              <p class="soruceInfo">Hdghskshsd</p>
+              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+              <p class="soruceInfo">Hdghskshsd</p>
+              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+              <p class="soruceInfo">Hdghskshsd</p>
+              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+              <p class="soruceInfo">Hdghskshsd</p>
+              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+            </div>
+          </div>
+          <div>
+            <p class="sourceTitle">Information source:</p>
+            <div class="sourceList">
+              <p class="soruceInfo soruceInfoExplanation">Used for:</p>
+              <p class="soruceInfo soruceInfoExplanation">Link to information:</p>
+              <p class="soruceInfo">Hdghskshsd</p>
+              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+              <p class="soruceInfo">Hdghskshsd</p>
+              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+              <p class="soruceInfo">Hdghskshsd</p>
+              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+              <p class="soruceInfo">Hdghskshsd</p>
+              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+              <p class="soruceInfo">Hdghskshsd</p>
+              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+              <p class="soruceInfo">Hdghskshsd</p>
+              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+              <p class="soruceInfo">Hdghskshsd</p>
+              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+              <p class="soruceInfo">Hdghskshsd</p>
+              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+              <p class="soruceInfo">Hdghskshsd</p>
+              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+              <p class="soruceInfo">Hdghskshsd</p>
+              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+              <p class="soruceInfo">Hdghskshsd</p>
+              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+              <p class="soruceInfo">Hdghskshsd</p>
+              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accountModal">
+      <div class="accountModalContent">
+        <div class="accountTitleLine">
+          <p class="accountTitle">Account</p>
+          <button class="closeAccountModal">
+            <i class="fa-regular fa-circle-xmark"></i>
+          </button>
+        </div>
+        <p class="accountInfo accountInfoEmail"><span class="accountInfoSpan">Email:</span></p>
+        <p class="accountInfo accountInfoUsername"><span class="accountInfoSpan">Username:</span></p>
+        <div>
+          <button class="editAccountInfo">Edit account information</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="editAccountModal">
+      <div class="editAccountModalContent">
+        <div class="accountTitleLine">
+          <p class="accountTitle">Account</p>
+          <button class="closeEditAccountModal">
+            <i class="fa-regular fa-circle-xmark"></i>
+          </button>
+        </div>
+        <label class="accountInfoLable">
+          <p class="currentEmail-Password currentUsername">Current username:</p>
+          <input class="newEmail-Password setNewUsername" placeholder="New username...">
+        </label>
+        <div class="accountButtonLine">
+          <button class="setNewAccountDetails">Confirm changes</button>
+          <button class="closeEditAccountModalBtn">I'll do it later</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="successAccountModal">
+      <div class="successAccountModalContent">
+        <div class="accountTitleLine">
+          <p class="accountTitle">Success</p>
+        </div>
+        <p class="successText">
+          Congratulations, your account has been successfully created. Press continue to login to your new account!
+        </p>
+        <button class="enterFirstTime">Continue</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDvogeC1Ezzu6xV7F78w0oO2zHgp5kxpcw",
+      authDomain: "loggin-project-88f47.firebaseapp.com",
+      projectId: "loggin-project-88f47",
+      atabaseURL: "https://guides.firebaseio.com"
+    };
+    firebase.initializeApp(config);
+    
+    // make auth and firestore references
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    // update firestore settings
+    db.settings({ timestampsInSnapshots: true });
+  </script>
+  <script src="./script/script.js"></script>
+  <script src="./script/scriptInner.js"></script>
+</body>
+</html>

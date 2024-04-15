@@ -1,0 +1,372 @@
+.innerPage {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, rgb(124,107,235), rgb(251,130,126));
+}
+
+
+/* Navbar */
+.navbar {
+  display: flex;
+  background-color: rgb(250, 247, 253);
+  justify-content: space-between;
+}
+
+.navbarLeft,
+.navbarRight {
+  background-color: rgb(250, 247, 253);
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+.loggOutButton, 
+.accountButton, 
+.sourceButton,
+.leaderButton,
+.pauseButton,
+.playButton {
+  height: 100%;
+  aspect-ratio: 1 / 0.8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 7px;
+  background-color: transparent;
+  border: none;
+  color: rgb(122,105,211);
+  font-size: 30px;
+}
+
+.loggOutButton:hover, 
+.accountButton:hover,
+.sourceButton:hover,
+.leaderButton:hover,
+.pauseButton:hover,
+.playButton:hover {
+  background-color: rgb(221, 214, 255);
+}
+
+.loggOutButton {
+  font-size: 27px;
+  padding-top: 10px;
+}
+
+.pauseButton {
+  display: none;
+}
+
+
+.navbarOptionText {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgb(52, 37, 124);
+}
+
+
+/* General modal */
+
+.accountTitleLine {
+  display: flex;
+  justify-content: space-between;
+}
+
+.accountTitle {
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.accountModal, 
+.editAccountModal, 
+.successAccountModal,
+.leaderboardAccountModal,
+.sourceAccountModal {
+  display: none; 
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.accountModalContent,
+.editAccountModalContent,
+.successAccountModalContent {
+  background-color: rgb(250, 247, 253);
+  margin: auto;
+  padding: 45px 65px;
+  border: 1px solid #888;
+  width: 80%;
+  margin-bottom: 45px;
+}
+
+.closeAccountModal,
+.closeEditAccountModal,
+.closeSuccessAccountModal,
+.closeLeaderboardAccountModal,
+.closeSourceAccountModal {
+  color: rgb(122,105,211);
+  font-size: 25px;
+  font-weight: bold;
+  background-color: transparent;
+  border: none;
+  padding: 9px 11px 7px 11px;
+  margin-top: -20px;
+  margin-right: -20px;
+}
+
+.closeAccountModal:hover,
+.closeEditAccountModal:hover,
+.closeSuccessAccountModal:hover,
+.closeLeaderboardAccountModal:hover,
+.closeSourceAccountModal:hover {
+  color: rgb(73, 65, 127);;
+}
+
+.enterFirstTime,
+.setNewAccountDetails{
+  padding: 4px 40px;
+  font-size: 17px;
+  margin-right: 40px;
+  background: linear-gradient(45deg, rgb(251,130,126), rgb(124,107,235));
+  border: none;
+  color: white;
+  border-radius: 18.75px;
+  transition: box-shadow 150ms, 
+margin 150ms;
+}
+
+.enterFirstTime:hover,
+.setNewAccountDetails:hover {
+  background: linear-gradient(45deg, rgb(248, 112, 107), rgb(106, 86, 235));
+}
+
+.enterFirstTime:active,
+.setNewAccountDetails:active {
+  background: linear-gradient(45deg, rgb(251,130,126), rgb(124,107,235));
+}
+
+/* Account modal*/
+
+.closeAccountModal:hover {
+  color: rgb(73, 65, 127);;
+}
+
+.editAccountInfo {
+  border: none;
+  background-color: transparent;
+  font-size: 15px;
+  font-weight: bold;
+  color: rgb(73, 65, 127);
+  margin-top: 15px;
+  margin-bottom: 1.5px;
+}
+
+.editAccountInfo:hover{
+  color: rgb(106, 93, 189);
+}
+
+.editAccountInfo:active{
+  color: rgb(59, 51, 109);
+}
+
+.accountInfo {
+  font-size: 20px;
+  margin: 25px 0px;
+}
+
+.accountInfoSpan {
+  font-size: 20px;
+  margin: 10px 0px;
+  font-weight: 600;
+}
+
+
+
+
+/* Edit account modal*/
+
+.accountInfoLable {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+
+.currentEmail-Password{
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(52, 37, 124);
+  margin-left: 3px;
+}
+
+.newEmail-Password{
+  color: rgb(122,105,211);
+  border: 1px solid rgb(96, 80, 197);
+  border-radius: 3px;
+  font-weight: 500;
+  padding: 6px 5px 5px 10px;
+  font-size: 16px;
+  border-width: 1px;
+  background: rgb(224, 222, 251);
+}
+
+.newEmail-Password::placeholder{
+  font-size:18px;
+  color:rgb(111, 98, 200);
+  opacity: 1;
+}
+
+.accountButtonLine{
+  margin-top: 55px;
+}
+
+.closeEditAccountModalBtn{
+  border: none;
+  background-color: transparent;
+  font-size: 15px;
+  font-weight: bold;
+  margin-right: 5px;
+  color: rgb(59, 51, 109);
+}
+
+.closeEditAccountModalBtn:hover{
+  color: rgb(106, 93, 189);
+}
+
+.closeEditAccountModalBtn:active{
+  color: rgb(59, 51, 109);
+}
+
+
+/* success account modal*/
+
+.confirmNewUsername {
+  margin-top: 50px;
+}
+
+.successText {
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 25px;
+  margin-bottom: 40px;
+}
+
+
+
+
+/*  Leaderboard  */
+
+.leaderAccountModalContent {
+  background-color: rgb(255, 255, 255);
+  margin: auto;
+  padding: 45px 65px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.leaderboardTitle {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.leaderboardUsers {
+  display: grid;
+  grid-template-columns: 45px 1fr;
+  margin-bottom: 5px;
+  outline: 2.5px white solid;
+}
+
+.leaderboardUsersPosition,
+.leaderboardUsersPositionRelative {
+  color: white;
+  border: 1px black solid;
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+  font-family: "Noto Sans Mono";
+  padding-left: 5px;
+  outline: 5px white solid;
+  font-size: 20px;
+}
+
+.leaderboardUsersUsernameAndScore,
+.leaderboardUsersUsernameAndScoreRelative {
+  border: 1px black solid;
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 0px 0px 10px;
+  padding: 0px 8px 0px 8px;
+  background-color: transparent;
+  outline: 5px white solid;
+  font-size: 20px;
+}
+
+.leaderboardUsersUsernameAndScoreRelative{
+  background-color: rgba(0,0,0,0.4);
+}
+
+.leaderboardUsersPositionRelative {
+  background-color: rgba(0,0,0,0.4);
+}
+
+.fa-arrows-up-down {
+  font-size: 30px;
+  margin-bottom: 4px;
+  background-color: rgb(255, 255, 255);
+  padding: 1px 100% 2px 0px;
+}
+
+.leaderboardUsersUsername {
+  color: white;
+  font-family: "Noto Sans Mono";
+}
+
+.leaderboardUsersScore {
+  color: white;
+  font-family: "Noto Sans Mono";
+}
+
+.leaderboardUsersTableModal{
+  background: linear-gradient(-35deg, rgb(251,130,126), rgb(124,107,235));
+}
+
+
+
+/* Sources */
+
+.sourceList{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  outline: 1.5px rgb(0, 0, 0) solid;
+  gap: 1.5px;
+}
+
+.soruceInfo {
+  outline: 1.5px rgb(0, 0, 0) solid;
+  padding: 2px 0px 3px 10px;
+  font-weight: 500;
+}
+
+.soruceInfoExplanation {
+  background-color: lightgray;
+  font-weight: 600;
+}
+
+.sourceTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.sourceCodeArea {
+  margin-bottom: 50px;
+}

@@ -1,0 +1,413 @@
+.accountPage {
+  display: flex;
+  min-height: 100vh;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgb(99,82,237), rgb(195,107,196));
+}
+
+/*XXXXXXXXXXXXXXXXXXXXXXXX*/
+
+
+
+/*Account Creation Sucsess*/
+
+.accountCreationSucsess {
+  max-width: 1100px;
+  margin: auto;
+  display: none;
+  grid-template-rows:2fr 3fr;  
+}
+
+.accountCreationSucsessVisual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, rgb(124,107,235), rgb(251,130,126));
+}
+
+.checkmark {
+  color: rgb(255, 255, 255);
+  font-size: 60px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.introTitleAcountCreationSuccess{
+  color: rgb(255, 255, 255);
+  font-size: 45px;
+  margin-bottom: 20px; 
+}
+
+.accountCreationSuccessTextBox {
+  background-color: rgb(250, 247, 253);
+  padding: 30px;
+}
+
+.accountCreationSuccessText {
+  margin-bottom: 20px;
+  color: rgb(52, 37, 124);
+  font-weight: 500;
+}
+
+/*XXXXXXXXXXXXXXXXXXXXXXXX*/
+
+
+
+/* Loggin  -  CreateAccount*/
+
+.loggin, .createAccount {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+}
+
+.introAccountPage {
+  background: linear-gradient(135deg, rgb(124,107,235), rgb(251,130,126));
+  padding: 150px 80px;
+}
+
+.introTitleAccountPage{
+  color: white;
+  font-size: 45px;
+  margin-bottom: 40px; 
+}
+
+.introTextAccountPage{
+  color: white;
+}
+
+.loginSide, .signInSide {
+  background-color: rgb(250, 247, 253);
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.loginTitle, .signInTitle {
+  color: rgb(122,105,211);
+}
+
+.accountPageInputArea {
+  display: flex;
+  flex-direction: column;
+  row-gap: 7px;
+  margin-bottom: 30px;
+}
+
+.accountPageInputLable {
+  display: flex;
+  flex-direction: column;
+  font-size: 17px;
+  margin-bottom: -5px;
+  margin-top: 20px;
+}
+
+.inputInfoAccountPage {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(52, 37, 124);
+  margin-left: 10px;
+}
+
+.loggPassword,
+.createPassword,
+.confirmCreatePassword {
+  letter-spacing: 3.5px;
+}
+
+.loggEmail::placeholder, 
+.loggPassword::placeholder,
+.createEmail::placeholder, 
+.createUsername::placeholder,
+.createPassword::placeholder,
+.confirmCreatePassword::placeholder
+ {
+  font-family: FontAwesome;
+  font-size: 15px;
+  color:blue;
+  opacity:.3;
+}
+
+/*XXXXXXXXXXXXXXXXXXXXXXXX*/
+
+
+
+/* Buttons / Button Line*/
+
+.accountPageButtonLine {
+  display: flex;
+  justify-content: space-between; 
+  margin-bottom: 40px;
+  max-width: 400px;
+}
+
+.accountPageMainButton {
+  padding: 4px 40px;
+  font-size: 17px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+  margin-right: 7px;
+  background: linear-gradient(45deg, rgb(251,130,126), rgb(124,107,235));
+  border: none;
+  color: white;
+  border-radius: 18.75px;
+  transition: box-shadow 150ms, 
+margin 150ms;
+}
+
+.accountPageMainButton:hover {
+  margin: 2px 7px -2px 2px;
+  box-shadow: none;
+  background: linear-gradient(45deg, rgb(248, 112, 107), rgb(106, 86, 235));
+}
+
+.accountPageMainButton:active {
+  margin: 2px 7px -2px 2px;
+  box-shadow: none;
+  background: linear-gradient(45deg, rgb(251,130,126), rgb(124,107,235));
+}
+
+.accountPageSecondButton {
+  border: none;
+  background-color: rgb(250, 247, 253);
+  font-size: 15px;
+  font-weight: bold;
+  margin-right: 5px;
+  color: rgb(59, 51, 109);
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 150ms, 
+margin 150ms;
+}
+
+.accountPageSecondButton:hover {
+  margin: 1px 4px 0px 1px;
+  text-shadow: none;
+}
+
+.accountPageSecondButton:active {
+  margin: 1px 4px 0px 1px;
+  text-shadow: none;
+  color: rgb(0, 0, 0);
+}
+
+/*XXXXXXXXXXXXXXXXXXXXXXXX*/
+
+
+
+/* Alert styling */
+  
+.alert_area {
+  background-color: rgba(255, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  border: solid 1.5px red;
+  border-radius: 3px;
+  max-width: 400px;
+}
+
+.alert_picture {
+  height: 20px;
+  margin: 0px 15px 0px 10px;
+}
+
+.error_measage_text {
+  font-size: 14px;
+  color: red;
+  line-height: 1.3;
+}
+
+.error_measage_text_div {
+  margin: 5px 0px 5px 0px;
+}
+
+/*XXXXXXXXXXXXXXXXXXXXXXXX*/
+
+
+
+/* Rotating page content */
+
+.loggin,
+.createAccount, 
+.accountCreationSucsess {
+  display: none;
+}
+
+div.showMain {
+  display: grid;
+}
+
+
+.createEmailAlertEmpty, 
+.createEmailAlertLength, 
+.createEmailAlertInUse,
+.createEmailAlertInvalid,
+.createEmailAlertUnknown,
+
+.createUsernameAlertEmpty,
+.createUsernameAlertLength,
+.createUsernameAlertUnknown,
+
+.createPasswordAlertEmpty, 
+.createPasswordAlertLength, 
+.createPasswordAlertEqual,
+.createPasswordAlertUnknown,
+
+.confirmCreatePasswordAlertEmpty,
+.confirmCreatePasswordAlertLength,
+.confirmCreatePasswordAlertEqual,
+.confirmCreatePasswordAlertUnknown,
+
+.loggEmailAlertEmpty, 
+.loggEmailAlertWrong, 
+.loggEmailAlertUnknown,
+
+.loggPasswordAlertEmpty, 
+.loggPasswordAlertWrong,
+.loggPasswordAlertUnknown {
+  display: none;
+}
+
+div.show {
+  display: flex;
+}
+
+.createEmail, 
+.createUsername,
+.createPassword, 
+.confirmCreatePassword,
+.loggEmail, 
+.loggPassword {
+  color: rgb(122,105,211);
+  border: 1px solid rgb(96, 80, 197);
+  border-radius: 3px;
+  font-weight: 500;
+  padding: 3px 3px 3px 8px;
+  font-size: 16px;
+  height: 30px;
+  border-width: 1px;
+  background: rgb(224, 222, 251);
+  max-width: 400px;
+}
+
+input.alert {
+  border: solid 2px red;
+}
+
+
+.alertMessage{
+  border-width: 2px;
+  border-color: red;
+}
+
+/*XXXXXXXXXXXXXXXXXXXXXXXX*/
+
+
+
+/* Media Querys */
+
+@media (max-width: 599px) {
+  .accountPage{
+    min-height: 0px;
+    background: rgb(250, 247, 253);
+  }
+
+  .loggin, .createAccount {
+    grid-template-columns: 1fr;
+  }
+
+  .intro {
+      padding: 35px 40px 80px 40px;
+    }
+
+  .loginSide, .signInSide {
+    padding: 60px 40px 50px 40px;
+  }
+
+  .inputArea {
+    max-width: none;
+  }
+
+  .button_line {
+    max-width: none;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 779px) {
+  .accountPage {
+    min-height: 0px;
+    background: rgb(250, 247, 253);
+  }
+
+  .loggin, .createAccount {
+    grid-template-columns: 1fr;
+  }
+
+
+  .inputArea {
+    max-width: none;
+  }
+
+  .button_line {
+    max-width: none;
+  }
+
+
+  
+  .intro {
+    padding: 65px 65px 120px 65px;
+  }
+
+  .loginSide, .signInSide {
+    padding: 65px 65px 50px 65px;
+  }
+}
+
+@media (min-width: 780px) and (max-width: 949px) {
+  .loggin, .createAccount {
+    grid-template-columns: 1fr;
+    max-width: 700px;
+    margin-top: 7vw;
+    margin-bottom: 100px;
+  }      
+
+
+  .accountCreationSucsess {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+  
+
+  .intro {
+    padding: 80px 80px 120px 80px;
+  }
+
+  .loginSide, .signInSide {
+    padding: 80px 80px 50px 80px;
+  }
+}
+
+@media (min-width: 950px) and (max-width: 1200px) {
+  .loggin, .createAccount {
+    grid-template-columns: 1fr;
+    max-width: 800px;
+    margin-top: 10vw;
+    margin-bottom: 100px;
+  }
+
+  .accountCreationSucsess {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+  
+
+  .intro {
+    padding: 80px 80px 120px 80px;
+  }
+
+  .loginSide, .signInSide {
+    padding: 80px 80px 50px 80px;
+    } 
+  }
