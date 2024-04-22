@@ -373,13 +373,16 @@
 
 
 /* Sources */
-.sourceCodeArea {
-  margin-bottom: 50px;
+.sourceCodeArea,
+.soruceInfoArea  {
+  margin-bottom: 40px;
   width: 100%;
+  text-align: start;
 }
 
-.soruceInfoArea{
+.sorucePictureArea {
   width: 100%;
+  text-align: start;
 }
 
 .sourceTitle {
