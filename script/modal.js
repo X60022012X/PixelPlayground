@@ -1,13 +1,4 @@
 // Account modal
-// Edit Account modal
-// Success modal
-// Source modal
-// Leaderboard modal
-// Tutorial modal
-// Settings modal
-
-
-// Account modal
 let accountModal = document.querySelector(".accountModal");
 let accountBtn = document.querySelector(".accountButton");
 let closeAccountBtn = document.querySelector(".closeAccountBtn");

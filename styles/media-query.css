@@ -56,11 +56,9 @@
 
 
 
-
-
-
 /* Inner page */
 @media (max-width: 599px) {
+  /* Game */
   .gameBackground {
     height: 100%;
     width: 100%;
@@ -70,6 +68,32 @@
     margin-bottom: 0px;
   }
 
+  .gameTitle,
+  .gameTimer {
+    font-size: 30px;
+  }
+
+  .gameAreaContainer{
+    flex-direction: column;
+  }
+
+  .gameBoardContainer {
+    height: 100%;
+  }
+
+  .gameButtonsContainer {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .gameButton {
+    margin: 0px 0px 30px 0px;
+  }
+  
+
+
+  /* Navbar */
   .navbar {
     flex-direction: column;
   }
@@ -127,34 +151,9 @@
     padding: 0px 20px;
   }
 
-  .gameTitle,
-  .gameTimer {
-    font-size: 30px;
-  }
 
-  .gameAreaContainer{
-    flex-direction: column;
-  }
-
-  .gameBoardContainer {
-    height: 100%;
-  }
-
-  .gameButtonsContainer {
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-around;
-  }
-
-  .gameButton {
-    margin: 0px 0px 30px 0px;
-  }
   
-  .innerPage {
-    min-height: 100vh;
-    height: 100%;
-  }
-
+  /* Modal */
   .modalContent {
     margin: auto;
     border: none;
@@ -175,6 +174,8 @@
   .loosingModal {
     padding-top: 0px
   }
+
+
 
   /* Settings */
   .settingsExplenation {
@@ -197,6 +198,8 @@
     padding: 4px 30px;    
   }
   
+
+  /* Account */
   .accountInfo {
     display: flex;
     flex-direction: column;
@@ -223,6 +226,8 @@
     font-size: 15px;
   }
 
+
+  /* Sources */
   .sourceList {
     grid-template-columns: 1fr;
     outline: none;
@@ -231,10 +236,11 @@
   .soruceInfo:nth-child(2n) {
     margin-bottom: 20px;
   }
-  
 }
 
 @media (min-width: 600px) and (max-width: 799px) {
+
+  /* Game */
   .gameBackground {
     height: 100%;
     width: 100%;
@@ -243,11 +249,6 @@
   .gameTitleContainer {
     margin-bottom: 0px;
     border-bottom: dotted gray 1px;
-  }
-
-  .navbarLeft,
-  .navbarRight {
-    display: flex;
   }
 
   .gameAreaContainer{
@@ -262,6 +263,8 @@
     flex-direction: row;    
   }
 
+
+  /* Modal */
   .modalContent {
     margin: auto;
     border: none;

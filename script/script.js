@@ -11,6 +11,9 @@ auth.onAuthStateChanged(user => {
     document.querySelector('.innerPage').style.display = 'flex'; 
     document.querySelector('.accountPage').style.display = 'none';
 
+
+		/* XXXXXXXXXXXXXXXXXXXXXXX */
+		/* First time loggin check */
     if (newAccount){
       document.querySelector('.successModal').style.display = 'block'; 
     } else {
@@ -52,6 +55,7 @@ auth.onAuthStateChanged(user => {
 		db.collection('users').doc(user.uid).onSnapshot(doc => {
 			currentUsername.innerHTML = `Current username: ${doc.data().username}`
 		})
+
 
 		/* XXXXXXXXXXXXXXXXXXXXXXX */
 		/*  Game  */
@@ -109,7 +113,7 @@ auth.onAuthStateChanged(user => {
 			startTimer();
 		}
 
-
+		/*  Start Timer  */
 		function startTimer(){
 			sec = 999;
 			timer = setInterval(function(){
@@ -127,6 +131,7 @@ auth.onAuthStateChanged(user => {
 		let board = [];
 
 
+		/*  Initialize Board  */
 		function initializeBoard() {
 			for (let i = 0; i < numRows; i++) {
 				board[i] = [];
@@ -141,7 +146,7 @@ auth.onAuthStateChanged(user => {
 				}
 			}
 
-			// Place mines randomly
+			/*  Place mines  */
 			let minesPlaced = 0;
 			while (minesPlaced < numMines) {
 				const row = Math.floor(
@@ -156,7 +161,7 @@ auth.onAuthStateChanged(user => {
 				}
 			}
 
-			// Calculate counts
+			/* Calculate counts */
 			for (let i = 0; i < numRows; i++) {
 				for (let j = 0; j < numCols; j++) {
 					if (!board[i][j].isMine) {
@@ -176,6 +181,8 @@ auth.onAuthStateChanged(user => {
 			}
 		}
 
+
+		/* Buttons */
 		let markMineBtn = document.querySelector('.markMine')
 		let revealCellBtn = document.querySelector('.revealCell')
 		let markMineActive = false
@@ -214,7 +221,7 @@ auth.onAuthStateChanged(user => {
 			}
 		});
 
-
+		/* Reveal Cell */
 		function revealCell(row, col) {
 			if (row < 0 || row >= numRows || col < 0 || col >= numCols || board[row][col].revealed || board[row][col].marked) {
 				return;
@@ -240,7 +247,7 @@ auth.onAuthStateChanged(user => {
 		} 
 
 			
-
+		/* Mark Cell */
 		function markCell(row, col) {
 			if (row < 0 || row >= numRows || col < 0 || col >= numCols || board[row][col].revealed) {
 				return;
@@ -260,6 +267,7 @@ auth.onAuthStateChanged(user => {
 			renderBoard();
 		}
 
+		/* Render Board */
 		function renderBoard() {
 			gameBoard.innerHTML = "";
 
@@ -293,6 +301,8 @@ auth.onAuthStateChanged(user => {
 			}
 		}
 
+
+		/* Game Won */
 		function delayedGameWon(){
 			setTimeout(gameWon, 500); 
 		}
@@ -370,6 +380,8 @@ auth.onAuthStateChanged(user => {
 
 		}
 
+
+		/* Game Lost */
 		function delayedGameLost(){
 			setTimeout(gameLost, 500); 
 		}
@@ -429,9 +441,9 @@ auth.onAuthStateChanged(user => {
 		}
 		startGame();
 
+
 		/* XXXXXXXXXXXXXXXXXXXXXXX */
 		/*  Leaderboard  */
-
 		db.collection('users').onSnapshot(snapshot => {
 			let userCollection = []
 			let liveLeaderboard = []
@@ -481,9 +493,9 @@ auth.onAuthStateChanged(user => {
 			}
 		})
 
+
 		/* XXXXXXXXXXXXXXXXXXXXXXX */
 		/* Create account  */
-
 		let createAccountButton = document.querySelector('.createAccountButton')
 
 		createAccountButton.addEventListener('click', () => {
@@ -567,11 +579,8 @@ auth.onAuthStateChanged(user => {
 })
 
 
-
-
 /* XXXXXXXXXXXXXXXXXXXXXXX */
 /*  Logout function  */
-
 let loggout = document.querySelector('.loggOutButton')
 loggout.addEventListener('click', () => {
   auth.signOut();
@@ -579,10 +588,8 @@ loggout.addEventListener('click', () => {
 })
 
 
-
 /* XXXXXXXXXXXXXXXXXXXXXXX */
 /*  Login function  */
-
 let loggIntoAccount = document.querySelector('.loggIntoAccount')
 
 loggIntoAccount.addEventListener('click', () => {
@@ -619,7 +626,6 @@ loggIntoAccount.addEventListener('click', () => {
 
 /* XXXXXXXXXXXXXXXXXXXXXXX */
 /* Unknown error loggin */
-	
 function errorLogin(){
 	document.querySelector('.loggEmailAlertUnknown').classList.add('show')
 	document.querySelector('.loggPasswordAlertUnknown').classList.add('show')
@@ -631,7 +637,6 @@ function errorLogin(){
 
 /* XXXXXXXXXXXXXXXXXXXXXXX */
 /* Unknown error signup */
-
 function errorSignup(){
 	document.querySelector('.createEmailAlertUnknown').classList.add('show')
 	document.querySelector('.createUsernameAlertUnknown').classList.add('show')
@@ -645,10 +650,8 @@ function errorSignup(){
 }
 
 
-
 /* XXXXXXXXXXXXXXXXXXXXXXX */
 /* Go to create account page */
-	
 goToSignupBtn = document.querySelector('.goToSignup')
 goToSignupBtn.addEventListener('click', () =>{
 	document.querySelector('.loggin').classList.remove('showMain')
@@ -662,7 +665,6 @@ goToSignupBtn.addEventListener('click', () =>{
 
 /* XXXXXXXXXXXXXXXXXXXXXXX */
 /* Go to login page */
-
 goToLoginBtn = document.querySelector('.goToLogin')
 goToLoginBtn.addEventListener('click', () => {
 	document.querySelector('.loggin').classList.add('showMain')
@@ -674,7 +676,6 @@ goToLoginBtn.addEventListener('click', () => {
 
 /* XXXXXXXXXXXXXXXXXXXXXXX */
 /* Wrong Email or Password */
-
 function wrongEmailOrPassword(){
 	document.querySelector('#loggEmail').classList.add('alert') 
 	document.querySelector('#loggPassword').classList.add('alert')
@@ -685,7 +686,6 @@ function wrongEmailOrPassword(){
 
 /* XXXXXXXXXXXXXXXXXXXXXXX */
 /*Clear Logg Email*/
-
 document.querySelector('#loggEmail').addEventListener("focus", clearLoggEmail)
 
 function clearLoggEmail(){
@@ -699,7 +699,6 @@ function clearLoggEmail(){
 
 /* XXXXXXXXXXXXXXXXXXXXXXX */
 /*Clear Logg Password*/
-
 document.querySelector('#loggPassword').addEventListener("focus", clearLoggPassword)
 
 function clearLoggPassword(){
@@ -713,7 +712,6 @@ function clearLoggPassword(){
 
 /* XXXXXXXXXXXXXXXXXXXXXXX */
 /*Clear Create Email*/
-
 document.querySelector('#createEmail').addEventListener("focus", clearCreateEmail)
 
 function clearCreateEmail(){
@@ -729,7 +727,6 @@ function clearCreateEmail(){
 
 /* XXXXXXXXXXXXXXXXXXXXXXX */
 /*Clear Create Username*/
-
 document.querySelector('#createUsername').addEventListener("focus", clearCreateUsername)
 
 function clearCreateUsername(){
@@ -743,7 +740,6 @@ function clearCreateUsername(){
 
 /* XXXXXXXXXXXXXXXXXXXXXXX */
 /*Clear Create Password*/
-
 document.querySelector('#createPassword').addEventListener("focus", clearCreatePassword)
 
 function clearCreatePassword(){
@@ -758,7 +754,6 @@ function clearCreatePassword(){
 
 /* XXXXXXXXXXXXXXXXXXXXXXX */
 /*Clear Create Confirm Password*/
-
 document.querySelector('#confirmCreatePassword').addEventListener("focus", clearConfirmCreatePassword)
 
 function clearConfirmCreatePassword(){
