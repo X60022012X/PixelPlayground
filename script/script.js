@@ -8,28 +8,31 @@ let newAccount
 /*  User status  */
 auth.onAuthStateChanged(user => {
   if (user) {
-    document.querySelector('.innerPage').style.display = 'block'; 
+    document.querySelector('.innerPage').style.display = 'flex'; 
     document.querySelector('.accountPage').style.display = 'none';
 
     if (newAccount){
-      document.querySelector('.successAccountModal').style.display = 'block'; 
+      document.querySelector('.successModal').style.display = 'block'; 
     } else {
-      document.querySelector('.successAccountModal').style.display = 'none'; 
+      document.querySelector('.successModal').style.display = 'none'; 
     }
 
 		let enterFirstTimeBtn = document.querySelector('.enterFirstTime')
 		enterFirstTimeBtn.addEventListener('click', () => {
-				document.querySelector('.successAccountModal').style.display = 'none'; 
+				document.querySelector('.successModal').style.display = 'none'; 
 		})
 
 
 		/* XXXXXXXXXXXXXXXXXXXXXXX */
 		/* Set new Username */
+		let editAccountModal = document.querySelector(".editAccountModal");
 		let setNewAccountDetailsBtn = document.querySelector('.setNewAccountDetails')
 		let setNewUsername = document.querySelector('.setNewUsername')
 		setNewAccountDetailsBtn.addEventListener('click', () => {
 			if(setNewUsername.value){
 				db.collection('users').doc(user.uid).update({username : setNewUsername.value})
+				setNewUsername.value = ''
+				editAccountModal.style.display = 'none'
 			}
 		})
 
@@ -50,34 +53,376 @@ auth.onAuthStateChanged(user => {
 			currentUsername.innerHTML = `Current username: ${doc.data().username}`
 		})
 
-
 		/* XXXXXXXXXXXXXXXXXXXXXXX */
-		/*  Sources  */
+		/*  Game  */
+		let numRows;
+		let numCols;
+		let numMines;
+		let emptyCellsRevealed = 0;
+		let minesMarked = 0;
+		let timer;
+		let score;
+		let sec;
 
-		let sourceBtn = document.querySelector('.sourceButton')
-		let sourceAccountModal = document.querySelector('.sourceAccountModal')
-		sourceBtn.addEventListener('click', () => {
-			sourceAccountModal.style.display = 'block'
+		let minefieldSize = document.querySelector('.minefieldSize')
+		let minePrecentage = document.querySelector('.minePrecentage')
+		let changes = document.querySelector('.setChangesSettings')
+		let refreshGame = document.querySelector('.refreshGame')
+		let canvas = document.querySelector('.gameBoardContainer')
+
+		changes.addEventListener('click', () => {
+			settingsModal.style.display = 'none'
+			startGame()
 		})
 
-		let closeSourceAccountModalBtn = document.querySelector('.closeSourceAccountModal')
-		closeSourceAccountModalBtn.addEventListener('click', () => {
-			sourceAccountModal.style.display = 'none'
+		refreshGame.addEventListener('click', () => {
+			startGame()
 		})
+
+		function startGame() {
+			let canvasWidth = canvas.offsetWidth
+			let canvasHeight = canvas.offsetHeight
+
+			score = 0;
+			emptyCellsRevealed = 0;
+			minesMarked = 0;
+
+			numRows =(canvasHeight - 5) / 42
+			numCols = (canvasWidth - 5) / 42
+			
+			if(minefieldSize.value == 'S'){
+				numRows = Math.floor(numRows * 0.6)
+				numCols = Math.floor(numCols * 0.6)
+			} else if(minefieldSize.value == 'M'){
+				numRows = Math.floor(numRows * 0.8)
+				numCols = Math.floor(numCols * 0.8)
+			} else if(minefieldSize.value == 'L'){
+				numRows = Math.floor(numRows)
+				numCols = Math.floor(numCols)
+			}
+			
+			numMines = Math.floor((numRows * numCols) * (Number(minePrecentage.value)/100))
+			
+			initializeBoard();
+			renderBoard();
+			clearInterval(timer);
+			startTimer();
+		}
+
+
+		function startTimer(){
+			sec = 999;
+			timer = setInterval(function(){
+					document.querySelector('.gameTimer').innerHTML=sec;
+					sec--;
+					if (sec < 0) {
+							clearInterval(timer);
+					}
+			}, 1000);
+		}
+
+
+
+		const gameBoard = document.querySelector(".gameBoard");
+		let board = [];
+
+
+		function initializeBoard() {
+			for (let i = 0; i < numRows; i++) {
+				board[i] = [];
+
+				for (let j = 0; j < numCols; j++) {
+					board[i][j] = {
+						isMine: false,
+						revealed: false,
+						marked: false,
+						count: 0,
+					};
+				}
+			}
+
+			// Place mines randomly
+			let minesPlaced = 0;
+			while (minesPlaced < numMines) {
+				const row = Math.floor(
+					Math.random() * numRows
+				);
+				const col = Math.floor(
+					Math.random() * numCols
+				);
+				if (!board[row][col].isMine) {
+					board[row][col].isMine = true;
+					minesPlaced++;
+				}
+			}
+
+			// Calculate counts
+			for (let i = 0; i < numRows; i++) {
+				for (let j = 0; j < numCols; j++) {
+					if (!board[i][j].isMine) {
+						let count = 0;
+						for (let dx = -1; dx <= 1; dx++) {
+							for (let dy = -1; dy <= 1; dy++) {
+								const ni = i + dx;
+								const nj = j + dy;
+								if (ni >= 0 && ni < numRows && nj >= 0 && nj < numCols && board[ni][nj].isMine) {
+									count++;
+								}
+							}
+						}
+						board[i][j].count = count;
+					}
+				}
+			}
+		}
+
+		let markMineBtn = document.querySelector('.markMine')
+		let revealCellBtn = document.querySelector('.revealCell')
+		let markMineActive = false
+		let revealCellActive = true
+		revealCellBtn.classList.add('activeGameBtn')
+
+		markMineBtn.addEventListener('click', () => {
+			markMineActive = true
+			markMineBtn.classList.add('activeGameBtn')
+			revealCellActive = false
+			revealCellBtn.classList.remove('activeGameBtn')
+		})
+
+		revealCellBtn.addEventListener('click', () => {
+			markMineActive = false
+			markMineBtn.classList.remove('activeGameBtn')
+			revealCellActive = true
+			revealCellBtn.classList.add('activeGameBtn')
+		})
+
+		window.addEventListener("keydown", (e) => {
+			if (e.code == 'Space') {
+				markMineActive = true
+				markMineBtn.classList.add('activeGameBtn')
+				revealCellActive = false
+				revealCellBtn.classList.remove('activeGameBtn')
+			}
+		});
+
+		window.addEventListener("keyup", (e) => {
+			if (e.code == 'Space') {
+				markMineActive = false
+				markMineBtn.classList.remove('activeGameBtn')
+				revealCellActive = true
+				revealCellBtn.classList.add('activeGameBtn')
+			}
+		});
+
+
+		function revealCell(row, col) {
+			if (row < 0 || row >= numRows || col < 0 || col >= numCols || board[row][col].revealed || board[row][col].marked) {
+				return;
+			}
+
+			board[row][col].revealed = true;
+
+			if (board[row][col].isMine) {
+				gameLost()
+			} else if (minesMarked == numMines && emptyCellsRevealed == ((numRows * numCols) - numMines - 1)) {
+				gameWon()
+			} else if (board[row][col].count === 0) {
+				emptyCellsRevealed++;
+				for (let dx = -1; dx <= 1; dx++) {
+					for (let dy = -1; dy <= 1; dy++) {
+							revealCell(row + dx,col + dy);
+					}
+				}
+			} else {
+				emptyCellsRevealed++; 
+			}
+			renderBoard();
+		} 
+
+			
+
+		function markCell(row, col) {
+			if (row < 0 || row >= numRows || col < 0 || col >= numCols || board[row][col].revealed) {
+				return;
+			}
+			
+			if (board[row][col].marked){
+				board[row][col].marked = false;
+				minesMarked--
+			} else if (!board[row][col].marked){
+				board[row][col].marked = true;
+				minesMarked++
+			} 
+			
+			if (minesMarked == numMines && emptyCellsRevealed == ((numRows * numCols) - numMines)) {
+				gameWon()
+			}
+			renderBoard();
+		}
+
+		function renderBoard() {
+			gameBoard.innerHTML = "";
+
+			for (let i = 0; i < numRows; i++) {
+				for (let j = 0; j < numCols; j++) {
+					const cell = document.createElement("div");
+					cell.className = "cell";
+					if (board[i][j].revealed) {
+						cell.classList.add("revealed");
+						if (board[i][j].isMine) {
+							cell.classList.add("mine");
+						} else if (board[i][j].count > 0) {
+							cell.textContent =board[i][j].count;
+						}
+					}
+
+					if (board[i][j].marked) {
+						cell.classList.add("marked");
+					}
+
+					cell.addEventListener("click", () => {
+						if(markMineActive){
+							markCell(i, j)
+						} else if(revealCellActive){
+							revealCell(i, j)
+						}
+					})
+					gameBoard.appendChild(cell);
+				}
+				gameBoard.appendChild(document.createElement("br"));
+			}
+		}
+
+		function gameWon(){
+			score = Math.floor(sec * numCols * numRows * Number(minePrecentage.value)/100)
+			clearInterval(timer)
+
+			let newHighscore = document.querySelector(".newHighscore");
+			let notNewHighscore = document.querySelector(".notNewHighscore");
+
+			
+			db.collection('users').doc(user.uid).get().then((doc) => {
+				if(score > doc.data().higscore){
+					newHighscore.style.display = 'flex'
+					notNewHighscore.style.display = 'none'
+					let prevWinningHighscore = document.querySelector(".prevWinningHighscore");
+					prevWinningHighscore.innerHTML = `Previous highscore: ${doc.data().higscore}`
+					let winningScoreHigh = document.querySelector(".winningScoreHigh");
+					winningScoreHigh.innerHTML = `New highscore: ${score}`
+					doc.ref.update({ higscore: Number(score) });
+				} else {
+					newHighscore.style.display = 'none'
+					notNewHighscore.style.display = 'flex'
+					let winningHighscore = document.querySelector(".winningHighscore");
+					winningHighscore.innerHTML = `Highscore: ${doc.data().higscore}`
+					let winningScoreLow = document.querySelector(".winningScoreLow");
+					winningScoreLow.innerHTML = `Score: ${score}`
+				}
+			})
+			
+			let minefieldSizeText;
+			if(minefieldSize.value == 'S'){
+				minefieldSizeText = 'Beginner'
+			} else if (minefieldSize.value == 'M'){
+				minefieldSizeText = 'Intermediate'
+			} else if (minefieldSize.value =='L'){
+				minefieldSizeText = 'Expert'
+			}
+
+			let winningMinefieldSize = document.querySelector(".winningMinefieldSize");
+			winningMinefieldSize.innerHTML = `Minefield size: ${minefieldSizeText}`
+			let winningMinePrecentage = document.querySelector(".winningMinePrecentage");
+			winningMinePrecentage.innerHTML = `Mine precentage: ${minePrecentage.value}%`
+			let winningTime = document.querySelector(".winningTime");
+			winningTime.innerHTML = `Time left: ${sec}sek`
+
+			let winningModal = document.querySelector(".winningModal");
+			let closeWinningBtn = document.querySelector(".closeWinningBtn");
+			let setNewHighscore = document.querySelector(".setNewHighscore");	
+			let tryGameAgian = document.querySelector(".tryGameAgian");
+			winningModal.style.display = "block";
+			
+			closeWinningBtn.addEventListener('click', () => {
+				winningModal.style.display = 'none'
+				startGame()
+			})
+
+			setNewHighscore.addEventListener('click', () => {
+				winningModal.style.display = "none";
+				startGame()
+			})
+
+			tryGameAgian.addEventListener('click', () => {
+				winningModal.style.display = "none";
+				startGame()
+			})
+
+			window.addEventListener('click', (e) => {
+				if (e.target == winningModal) {
+					winningModal.style.display = "none";
+					startGame()
+				}
+			})
+
+		}
+
+		function gameLost(){
+			score = Math.floor(sec * numCols * numRows * Number(minePrecentage.value)/100)
+			clearInterval(timer)
+			
+			db.collection('users').doc(user.uid).get().then((doc) => {
+				let loosingHighscore = document.querySelector(".loosingHighscore");
+				loosingHighscore.innerHTML = `Highscore: ${doc.data().higscore}`
+
+				let loosingScore = document.querySelector(".loosingScore");
+				loosingScore.innerHTML = `Score: ${score}`
+			})
+			
+			let minefieldSizeText;
+			if(minefieldSize.value == 'S'){
+				minefieldSizeText = 'Beginner'
+			} else if (minefieldSize.value == 'M'){
+				minefieldSizeText = 'Intermediate'
+			} else if (minefieldSize.value =='L'){
+				minefieldSizeText = 'Expert'
+			}
+
+			let loosingMinefieldSize = document.querySelector(".loosingMinefieldSize");
+			loosingMinefieldSize.innerHTML = `Minefield size: ${minefieldSizeText}`
+
+			let loosingMinePrecentage = document.querySelector(".loosingMinePrecentage");
+			loosingMinePrecentage.innerHTML = `Mine precentage: ${minePrecentage.value}%`
+
+			let loosingTime = document.querySelector(".loosingTime");
+			loosingTime.innerHTML = `Time left: ${sec}sek`
+
+			let loosingModal = document.querySelector(".loosingModal");
+			let closeLoosingBtn = document.querySelector(".closeLoosingBtn");
+			let lossTryGameAgian = document.querySelector(".lossTryGameAgian");
+			loosingModal.style.display = "block";
+			
+			closeLoosingBtn.addEventListener('click', () => {
+				loosingModal.style.display = 'none'
+				startGame()
+			})
+
+			lossTryGameAgian.addEventListener('click', () => {
+				loosingModal.style.display = "none";
+				startGame()
+			})
+
+			window.addEventListener('click', (e) => {
+				if (e.target == loosingModal) {
+					loosingModal.style.display = "none";
+					startGame()
+				}
+			})
+			
+		}
+		startGame();
 
 		/* XXXXXXXXXXXXXXXXXXXXXXX */
 		/*  Leaderboard  */
-
-		let leaderBtn = document.querySelector('.leaderButton')
-		let leaderboardAccountModal = document.querySelector('.leaderboardAccountModal')
-		leaderBtn.addEventListener('click', () => {
-			leaderboardAccountModal.style.display = 'block'
-		})
-
-		let closeLeaderboardAccountModalBtn = document.querySelector('.closeLeaderboardAccountModal')
-		closeLeaderboardAccountModalBtn.addEventListener('click', () => {
-			leaderboardAccountModal.style.display = 'none'
-		})
 
 		db.collection('users').onSnapshot(snapshot => {
 			let userCollection = []
@@ -87,8 +432,6 @@ auth.onAuthStateChanged(user => {
 			}
 			
 			liveLeaderboard = userCollection.sort((a, b) => b.highscore - a.highscore);
-
-			let leaderboardUsersTable = document.querySelector('.leaderboardUsersTable')
 			let leaderboardUsersTableModal = document.querySelector('.leaderboardUsersTableModal')
 			leaderboardUsersTableModal.innerHTML = ``
 			for(let i = 0; i < 10; i++){
@@ -128,16 +471,6 @@ auth.onAuthStateChanged(user => {
 					} 
 				}
 			}
-
-			
-
-			let testScore = document.querySelector('.testScore')
-			let testSubmit = document.querySelector('.testSubmit')
-			testSubmit.addEventListener('click', () =>{
-				db.collection('users').doc(user.uid).update({
-					higscore: Number(testScore.value)
-				})
-			})
 		})
 
 		/* XXXXXXXXXXXXXXXXXXXXXXX */
@@ -218,34 +551,12 @@ auth.onAuthStateChanged(user => {
 				})
 			}
 		})
-
-		
   } else {
     document.querySelector('.accountPage').style.display = 'flex';
     document.querySelector('.innerPage').style.display = 'none'; 
     document.querySelector('.loggin').classList.add('showMain')
   }
 })
-
-
-
-/* XXXXXXXXXXXXXXXXXXXXXXX */
-/* Game  */
-
-let playBtn = document.querySelector('.playButton')
-let pauseBtn = document.querySelector('.pauseButton')
-
-playBtn.addEventListener('click', () => {
-	document.querySelector('.playButton').style.display = 'none';
-	document.querySelector('.pauseButton').style.display = 'flex'; 
-})
-
-pauseBtn.addEventListener('click', () => {
-	document.querySelector('.playButton').style.display = 'flex';
-	document.querySelector('.pauseButton').style.display = 'none'; 
-})
-
-
 
 
 
@@ -282,7 +593,7 @@ loggIntoAccount.addEventListener('click', () => {
 		document.querySelector('.loggPasswordAlertEmpty').classList.add('show')
 	} else {
     auth.signInWithEmailAndPassword(email, password).then(() => {
-      document.querySelector('.innerPage').style.display = 'block'; 
+      document.querySelector('.innerPage').style.display = 'flex'; 
       document.querySelector('.accountPage').style.display = 'none';
       newAccount = false
     }).catch((error) => {

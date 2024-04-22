@@ -1,57 +1,10 @@
 .accountPage {
   display: flex;
   min-height: 100vh;
-  height: 100%;
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, rgb(99,82,237), rgb(195,107,196));
 }
-
-/*XXXXXXXXXXXXXXXXXXXXXXXX*/
-
-
-
-/*Account Creation Sucsess*/
-
-.accountCreationSucsess {
-  max-width: 1100px;
-  margin: auto;
-  display: none;
-  grid-template-rows:2fr 3fr;  
-}
-
-.accountCreationSucsessVisual {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: linear-gradient(135deg, rgb(124,107,235), rgb(251,130,126));
-}
-
-.checkmark {
-  color: rgb(255, 255, 255);
-  font-size: 60px;
-  margin-top: 40px;
-  margin-bottom: 20px;
-}
-
-.introTitleAcountCreationSuccess{
-  color: rgb(255, 255, 255);
-  font-size: 45px;
-  margin-bottom: 20px; 
-}
-
-.accountCreationSuccessTextBox {
-  background-color: rgb(250, 247, 253);
-  padding: 30px;
-}
-
-.accountCreationSuccessText {
-  margin-bottom: 20px;
-  color: rgb(52, 37, 124);
-  font-weight: 500;
-}
-
-/*XXXXXXXXXXXXXXXXXXXXXXXX*/
 
 
 
@@ -67,16 +20,20 @@
 .introAccountPage {
   background: linear-gradient(135deg, rgb(124,107,235), rgb(251,130,126));
   padding: 150px 80px;
+  display: flex;
+  flex-direction: column;
 }
 
 .introTitleAccountPage{
   color: white;
   font-size: 45px;
   margin-bottom: 40px; 
+  text-align: start;
 }
 
 .introTextAccountPage{
   color: white;
+  text-align: start;
 }
 
 .loginSide, .signInSide {
@@ -85,6 +42,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: start;
+  width: 100%;
 }
 
 .loginTitle, .signInTitle {
@@ -94,6 +53,7 @@
 .accountPageInputArea {
   display: flex;
   flex-direction: column;
+  width: 100%;
   row-gap: 7px;
   margin-bottom: 30px;
 }
@@ -101,9 +61,11 @@
 .accountPageInputLable {
   display: flex;
   flex-direction: column;
+  align-items: start;
   font-size: 17px;
   margin-bottom: -5px;
   margin-top: 20px;
+  width: 100%;
 }
 
 .inputInfoAccountPage {
@@ -135,7 +97,6 @@
 /*XXXXXXXXXXXXXXXXXXXXXXXX*/
 
 
-
 /* Buttons / Button Line*/
 
 .accountPageButtonLine {
@@ -143,6 +104,7 @@
   justify-content: space-between; 
   margin-bottom: 40px;
   max-width: 400px;
+  width: 100%;
 }
 
 .accountPageMainButton {
@@ -290,6 +252,7 @@ div.show {
   border-width: 1px;
   background: rgb(224, 222, 251);
   max-width: 400px;
+  width: 100%;
 }
 
 input.alert {
@@ -306,108 +269,3 @@ input.alert {
 
 
 
-/* Media Querys */
-
-@media (max-width: 599px) {
-  .accountPage{
-    min-height: 0px;
-    background: rgb(250, 247, 253);
-  }
-
-  .loggin, .createAccount {
-    grid-template-columns: 1fr;
-  }
-
-  .intro {
-      padding: 35px 40px 80px 40px;
-    }
-
-  .loginSide, .signInSide {
-    padding: 60px 40px 50px 40px;
-  }
-
-  .inputArea {
-    max-width: none;
-  }
-
-  .button_line {
-    max-width: none;
-  }
-}
-
-@media (min-width: 600px) and (max-width: 779px) {
-  .accountPage {
-    min-height: 0px;
-    background: rgb(250, 247, 253);
-  }
-
-  .loggin, .createAccount {
-    grid-template-columns: 1fr;
-  }
-
-
-  .inputArea {
-    max-width: none;
-  }
-
-  .button_line {
-    max-width: none;
-  }
-
-
-  
-  .intro {
-    padding: 65px 65px 120px 65px;
-  }
-
-  .loginSide, .signInSide {
-    padding: 65px 65px 50px 65px;
-  }
-}
-
-@media (min-width: 780px) and (max-width: 949px) {
-  .loggin, .createAccount {
-    grid-template-columns: 1fr;
-    max-width: 700px;
-    margin-top: 7vw;
-    margin-bottom: 100px;
-  }      
-
-
-  .accountCreationSucsess {
-    margin-left: 100px;
-    margin-right: 100px;
-  }
-  
-
-  .intro {
-    padding: 80px 80px 120px 80px;
-  }
-
-  .loginSide, .signInSide {
-    padding: 80px 80px 50px 80px;
-  }
-}
-
-@media (min-width: 950px) and (max-width: 1200px) {
-  .loggin, .createAccount {
-    grid-template-columns: 1fr;
-    max-width: 800px;
-    margin-top: 10vw;
-    margin-bottom: 100px;
-  }
-
-  .accountCreationSucsess {
-    margin-left: 100px;
-    margin-right: 100px;
-  }
-  
-
-  .intro {
-    padding: 80px 80px 120px 80px;
-  }
-
-  .loginSide, .signInSide {
-    padding: 80px 80px 50px 80px;
-    } 
-  }

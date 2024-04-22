@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="./styles/generel.css">
   <link rel="stylesheet" href="./styles/account-page.css">
   <link rel="stylesheet" href="./styles/inner-page.css">
+  <link rel="stylesheet" href="./styles/game.css">
+  <link rel="stylesheet" href="./styles/media-query.css">
 </head>
 <body>
   <div class="accountPage">
@@ -242,140 +244,316 @@
   </div>
 
   <div class="innerPage">
-    <div>
-      <div class="navbar">
-        <div class="navbarLeft">
-          <button class="playButton">
-            <i class="fa-solid fa-play"></i>
-            <p class="navbarOptionText">Play</p>
-          </button>
-          <button class="pauseButton">
-            <i class="fa-solid fa-pause"></i>
-            <p class="navbarOptionText">Pause</p>
-          </button>
+    <div class="navbar">
+      <div class="navbarScroll">
+        <button class="displayOptionsButton">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <button class="removeOptionsButton">
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+      </div>
+      <div class="navbarLeft">
+        <button class="settingsButton">
+          <i class="fa-solid fa-gear"></i>
+          <p class="navbarOptionText">Settings</p>
+        </button>
+        <button class="tutorialButton">
+          <i class="fa-solid fa-book-open"></i>
+          <p class="navbarOptionText">Tutorial</p>
+        </button>
+      </div>
+      <div class="navbarRight">
+        <button class="leaderButton">
+          <i class="fa-solid fa-ranking-star"></i>
+          <p class="navbarOptionText">Leaderboard</p>
+        </button>
+        <button class="sourceButton">
+          <i class="fa-solid fa-list-ul"></i>
+          <p class="navbarOptionText">Sources</p>
+        </button>
+        <button class="loggOutButton">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          <p class="navbarOptionText">Logout</p>
+        </button>
+        <button class="accountButton">
+          <i class="fa-regular fa-circle-user"></i>
+          <p class="navbarOptionText">Account</p>
+        </button>
+      </div>
+    </div>
+    
+    <div class="gameContainer">
+      <div class="gameBackground">
+        <div class="gameTitleContainer">
+          <p class="gameTitle">Minesweeper</p>
+          <p class="gameTimer">999</p>
         </div>
-        <div class="navbarRight">
-          <button class="leaderButton">
-            <i class="fa-solid fa-list-ol"></i>
-            <p class="navbarOptionText">Leaderboard</p>
-          </button>
-          <button class="sourceButton">
-            <i class="fa-solid fa-list-ul"></i>
-            <p class="navbarOptionText">Sources</p>
-          </button>
-          <button class="loggOutButton">
-            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-            <p class="navbarOptionText">Logout</p>
-          </button>
-          <button class="accountButton">
-            <i class="fa-regular fa-circle-user"></i>
-            <p class="navbarOptionText">Account</p>
-          </button>
+        <div class="gameAreaContainer">
+          <div class="gameButtonsContainer">
+            <button class="gameButton markMine">
+              <i class="fa-brands fa-font-awesome"></i>
+              <p>Highlight mine</p>
+            </button>
+            <button class="gameButton revealCell">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <p>Uncover cell</p>
+            </button>
+            <button class="refreshGame">
+              <i class="fa-solid fa-rotate-right"></i>
+              <p>Refresh</p>
+            </button>
+          </div>
+          <div class="verticalDividor"></div>
+          <div class="horisontalDividor"></div>
+          <div class="gameBoardContainer">
+            <div class="gameBoard"></div>
+          </div>
         </div>
       </div>
     </div>
 
-
-    <div>
-      <input class="testScore" placeholder="Score">
-      <button class="testSubmit">Submit</button>
-    </div>
-
-    <div class="leaderboardAccountModal">
-      <div class="leaderAccountModalContent">
+    <div class="winningModal">
+      <div class="modalContent">
+        <div class="modalTitleLine">
+          <p class="modalTitle">You won</p>
+          <button class="closeWinningBtn">
+            <i class="fa-regular fa-circle-xmark"></i>
+          </button>
+        </div>
         <div>
-          <div class="accountTitleLine">
-            <p class="accountTitle">Leaderbord</p>
-            <button class="closeLeaderboardAccountModal">
-              <i class="fa-regular fa-circle-xmark"></i>
-            </button>
+          <div class="gameDetails">
+            <p class="gameWonTitle">Game details</p>
+            <p class="winningMinefieldSize">Minefield size:</p>
+            <p class="winningMinePrecentage">Mine percentage:</p>
+            <p class="winningTime">Time remaining:</p>
           </div>
-          <div class="leaderboardUsersTableModal">
+          <div class="newHighscore">
+            <p class="gameWonTitle">Score</p>
+            <p  class="prevWinningHighscore">Previous highscore:</p>
+            <p class="winningScoreHigh">Current score:</p>
+            <button class="setNewHighscore">Set new highscore</button>
+          </div>
+          <div class="notNewHighscore"> 
+            <p class="gameWonTitle">Score</p>
+            <p class="winningHighscore">Highscore:</p>
+            <p class="winningScoreLow">Current score:</p>
+            <button class="tryGameAgian">Try agian</button>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="sourceAccountModal">
-      <div class="accountModalContent">
+    <div class="loosingModal">
+      <div class="modalContent">
+        <div class="modalTitleLine">
+          <p class="modalTitle">You lost</p>
+          <button class="closeLoosingBtn">
+            <i class="fa-regular fa-circle-xmark"></i>
+          </button>
+        </div>
         <div>
-          <div class="accountTitleLine">
-            <p class="accountTitle">Sources</p>
-            <button class="closeSourceAccountModal">
-              <i class="fa-regular fa-circle-xmark"></i>
-            </button>
+          <div class="gameDetails">
+            <p class="gameWonTitle">Game details</p>
+            <p class="loosingMinefieldSize">Minefield size:</p>
+            <p class="loosingMinePrecentage">Mine percentage:</p>
+            <p class="loosingTime">Time remaining:</p>
           </div>
-          <div class="sourceCodeArea">
-            <p class="sourceTitle">Code source:</p>
-            <div class="sourceList">
-              <p class="soruceInfo soruceInfoExplanation">Used for:</p>
-              <p class="soruceInfo soruceInfoExplanation">Link to code:</p>
-              <p class="soruceInfo">Hdghskshsd</p>
-              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
-              <p class="soruceInfo">Hdghskshsd</p>
-              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
-              <p class="soruceInfo">Hdghskshsd</p>
-              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
-              <p class="soruceInfo">Hdghskshsd</p>
-              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
-              <p class="soruceInfo">Hdghskshsd</p>
-              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
-              <p class="soruceInfo">Hdghskshsd</p>
-              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
-              <p class="soruceInfo">Hdghskshsd</p>
-              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
-              <p class="soruceInfo">Hdghskshsd</p>
-              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
-              <p class="soruceInfo">Hdghskshsd</p>
-              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
-              <p class="soruceInfo">Hdghskshsd</p>
-              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
-              <p class="soruceInfo">Hdghskshsd</p>
-              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
-              <p class="soruceInfo">Hdghskshsd</p>
-              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
-            </div>
+
+          <div class="loosingNotNewHighscore"> 
+            <p class="gameWonTitle">Score</p>
+            <p class="loosingHighscore">Highscore:</p>
+            <p class="loosingScore">Current score:</p>
+            <button class="lossTryGameAgian">Try agian</button>
           </div>
-          <div>
-            <p class="sourceTitle">Information source:</p>
-            <div class="sourceList">
-              <p class="soruceInfo soruceInfoExplanation">Used for:</p>
-              <p class="soruceInfo soruceInfoExplanation">Link to information:</p>
-              <p class="soruceInfo">Hdghskshsd</p>
-              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
-              <p class="soruceInfo">Hdghskshsd</p>
-              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
-              <p class="soruceInfo">Hdghskshsd</p>
-              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
-              <p class="soruceInfo">Hdghskshsd</p>
-              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
-              <p class="soruceInfo">Hdghskshsd</p>
-              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
-              <p class="soruceInfo">Hdghskshsd</p>
-              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
-              <p class="soruceInfo">Hdghskshsd</p>
-              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
-              <p class="soruceInfo">Hdghskshsd</p>
-              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
-              <p class="soruceInfo">Hdghskshsd</p>
-              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
-              <p class="soruceInfo">Hdghskshsd</p>
-              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
-              <p class="soruceInfo">Hdghskshsd</p>
-              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
-              <p class="soruceInfo">Hdghskshsd</p>
-              <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
-            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="settingsModal">
+      <div class="modalContent">
+        <div class="modalTitleLine">
+          <p class="modalTitle">Settings</p>
+          <button class="closeSettingsBtn">
+            <i class="fa-regular fa-circle-xmark"></i>
+          </button>
+        </div>
+        <div class="settingsContainer">
+          <p class="settingsExplenation">Mine percentage:</p>
+          <select class="minePrecentage">
+            <option value="10">10% - Easy</option>
+            <option value="15">15% - Normal</option>
+            <option value="20">20% - Hard</option>
+            <option value="25">25% - Insane</option>
+            <option value="99">99% - Menace</option>
+          </select>
+          <p class="settingsExplenation">Minefield size:</p>
+          <select class="minefieldSize">
+            <option value="S">Beginner</option>
+            <option value="M">Intermediate</option>
+            <option value="L">Expert</option>
+          </select>
+        </div>
+        <button class="setChangesSettings">Set changes</button>
+      </div>
+    </div>
+
+    <div class="tutorialModal">
+      <div class="modalContent">
+        <div class="modalTitleLine">
+          <p class="modalTitle">Tutorial</p>
+          <button class="closeTutorialBtn">
+            <i class="fa-regular fa-circle-xmark"></i>
+          </button>
+        </div>
+        <div class="tutorialBox">
+          <div class="tutorialPoint">
+            <p class="tutorialPointTitle">1. Objective:</p>
+            <p class="tutorialPointParagraph">Your task is to uncover all the clear squares and mark all the mines on the grid, without clicking on any mines. Each square you uncover will either reveal a number indicating the number of adjacent mines, or it will be blank if there are no mines nearby.</p>
+          </div>
+          <div class="tutorialPoint">
+            <p class="tutorialPointTitle">2. Controls:</p>
+            <ul class="tutorialPointList">
+              <ul class="tutorialPointList">
+                <p class="tutorialUnderline">For PC:</p>
+                <li class="tutorialPointListPoint">Click: Uncover a square.</li>
+                <li class="tutorialPointListPoint">Hold "space" and click: Place a flag on a cell that contains a mine.</li>
+              </ul>
+              <ul class="tutorialPointList">
+                <p class="tutorialUnderline">For Mobile:</p>
+                <li class="tutorialPointListPoint">Select "Uncover cell" and click: Uncover a square.</li>
+                <li class="tutorialPointListPoint">Select "Mark mine" and click: Place a flag on a cell that contains a mine.</li>
+              </ul>
+            </ul>
+          </div>
+          <div class="tutorialPoint">
+            <p class="tutorialPointTitle">3. Gameplay:</p>
+            <ul class="tutorialPointList">
+              <li class="tutorialPointListPoint">Start by uncovering any square on the grid.</li>
+              <li class="tutorialPointListPoint">The number revealed on a square indicates how many mines are adjacent to it.</li>
+              <li class="tutorialPointListPoint">Use the numbers as clues to deduce the locations of mines.</li>
+              <li class="tutorialPointListPoint">If you uncover a square with a mine, the game ends.</li>
+              <li class="tutorialPointListPoint">If you find a square that must contain a mine, use a flag to mark it as a mine.</li>
+              <li class="tutorialPointListPoint">You can remove a flag by clicking te´he square agian.</li>
+            </ul>
+          </div>
+          <div class="tutorialPoint">
+            <p class="tutorialPointTitle">4. Strategy Tips:</p>
+            <ul class="tutorialPointList">
+              <li class="tutorialPointListPoint">Use logic and deduction to identify safe squares. </li>
+              <li class="tutorialPointListPoint">Pay attention to patterns and use process of elimination to narrow down the locations of mines.</li>
+              <li class="tutorialPointListPoint">Go to setting to change, for example: minefield size and the amount of mines.</li>
+              <li class="tutorialPointListPoint">The score is based off and the amount of mines, minefield size and time remaining.</li>
+            </ul>
+          </div>
+          <div class="tutorialPoint">
+            <p class="tutorialPointTitle">5. Winning:</p>
+            <ul class="tutorialPointList">
+              <li class="tutorialPointListPoint">Clear all the safe squares and mark all the mines on the grid, without detonating any mines to win the game.</li>
+              <li class="tutorialPointListPoint">Once you've uncovered all safe squares and marked all the mines on the grid, the game will automatically end.</li>
+            </ul>
+          </div>
+          <div class="tutorialPoint">
+            <p class="tutorialPointTitle">6. Losing:</p>
+            <ul class="tutorialPointList">
+              <li class="tutorialPointListPoint">If you uncover a square with a mine, the game ends immediately, and you lose.</li>
+              <li class="tutorialPointListPoint">Take your time, strategize, and think carefully before making each move to avoid uncovering any mines accidentally.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="leaderboardModal">
+      <div class="modalContent">
+        <div class="modalTitleLine">
+          <p class="modalTitle">Leaderbord</p>
+          <button class="closeLeaderboardBtn">
+            <i class="fa-regular fa-circle-xmark"></i>
+          </button>
+        </div>
+        <div class="leaderboardUsersTableModal"></div>
+      </div>
+    </div>
+
+    <div class="sourceModal">
+      <div class="modalContent">
+        <div class="modalTitleLine">
+          <p class="modalTitle">Sources</p>
+          <button class="closeSourceBtn">
+            <i class="fa-regular fa-circle-xmark"></i>
+          </button>
+        </div>
+        <div class="sourceCodeArea">
+          <p class="sourceTitle">Code source:</p>
+          <div class="sourceList">
+            <p class="soruceInfo soruceInfoExplanation">Used for:</p>
+            <p class="soruceInfo soruceInfoExplanation">Link to code:</p>
+            <p class="soruceInfo">Hdghskshsd</p>
+            <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+            <p class="soruceInfo">Hdghskshsd</p>
+            <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+            <p class="soruceInfo">Hdghskshsd</p>
+            <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+            <p class="soruceInfo">Hdghskshsd</p>
+            <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+            <p class="soruceInfo">Hdghskshsd</p>
+            <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+            <p class="soruceInfo">Hdghskshsd</p>
+            <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+            <p class="soruceInfo">Hdghskshsd</p>
+            <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+            <p class="soruceInfo">Hdghskshsd</p>
+            <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+            <p class="soruceInfo">Hdghskshsd</p>
+            <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+            <p class="soruceInfo">Hdghskshsd</p>
+            <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+            <p class="soruceInfo">Hdghskshsd</p>
+            <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+            <p class="soruceInfo">Hdghskshsd</p>
+            <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+          </div>
+        </div>
+        <div class="soruceInfoArea">
+          <p class="sourceTitle">Information source:</p>
+          <div class="sourceList">
+            <p class="soruceInfo soruceInfoExplanation">Used for:</p>
+            <p class="soruceInfo soruceInfoExplanation">Link to information:</p>
+            <p class="soruceInfo">Hdghskshsd</p>
+            <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+            <p class="soruceInfo">Hdghskshsd</p>
+            <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+            <p class="soruceInfo">Hdghskshsd</p>
+            <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+            <p class="soruceInfo">Hdghskshsd</p>
+            <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+            <p class="soruceInfo">Hdghskshsd</p>
+            <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+            <p class="soruceInfo">Hdghskshsd</p>
+            <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+            <p class="soruceInfo">Hdghskshsd</p>
+            <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+            <p class="soruceInfo">Hdghskshsd</p>
+            <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+            <p class="soruceInfo">Hdghskshsd</p>
+            <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+            <p class="soruceInfo">Hdghskshsd</p>
+            <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+            <p class="soruceInfo">Hdghskshsd</p>
+            <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
+            <p class="soruceInfo">Hdghskshsd</p>
+            <a class="soruceInfo" href="https://www.computerhope.com/jargon/c/computer.htm">computerhope.com</a>
           </div>
         </div>
       </div>
     </div>
 
     <div class="accountModal">
-      <div class="accountModalContent">
-        <div class="accountTitleLine">
-          <p class="accountTitle">Account</p>
-          <button class="closeAccountModal">
+      <div class="modalContent">
+        <div class="modalTitleLine">
+          <p class="modalTitle">Account</p>
+          <button class="closeAccountBtn">
             <i class="fa-regular fa-circle-xmark"></i>
           </button>
         </div>
@@ -388,10 +566,10 @@
     </div>
 
     <div class="editAccountModal">
-      <div class="editAccountModalContent">
-        <div class="accountTitleLine">
-          <p class="accountTitle">Account</p>
-          <button class="closeEditAccountModal">
+      <div class="modalContent">
+        <div class="modalTitleLine">
+          <p class="modalTitle"> Edit account</p>
+          <button class="closeEditAccountBtn">
             <i class="fa-regular fa-circle-xmark"></i>
           </button>
         </div>
@@ -401,15 +579,15 @@
         </label>
         <div class="accountButtonLine">
           <button class="setNewAccountDetails">Confirm changes</button>
-          <button class="closeEditAccountModalBtn">I'll do it later</button>
+          <button class="secondCloseEditAccountBtn">I'll do it later</button>
         </div>
       </div>
     </div>
 
-    <div class="successAccountModal">
-      <div class="successAccountModalContent">
-        <div class="accountTitleLine">
-          <p class="accountTitle">Success</p>
+    <div class="successModal">
+      <div class="modalContent">
+        <div class="modalTitleLine">
+          <p class="modalTitle">Success</p>
         </div>
         <p class="successText">
           Congratulations, your account has been successfully created. Press continue to login to your new account!
@@ -441,6 +619,6 @@
     db.settings({ timestampsInSnapshots: true });
   </script>
   <script src="./script/script.js"></script>
-  <script src="./script/scriptInner.js"></script>
+  <script src="./script/modal.js"></script>
 </body>
 </html>

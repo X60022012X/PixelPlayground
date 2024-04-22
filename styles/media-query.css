@@ -1,0 +1,280 @@
+/* Account page */
+
+@media (max-width: 599px) {
+  .accountPage {
+    min-height: 0px;
+  }
+   .loggin, .createAccount {
+    grid-template-columns: 1fr;
+  }
+
+  .loginSide, .signInSide {
+    padding: 60px 40px 50px 40px;
+  }
+
+  .introAccountPage {
+    padding: 80px 50px;
+  }
+
+  .introTitleAccountPage{
+    font-size: 30px;
+    margin-right: 0px;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+  .accountPage {
+    min-height: 0px;
+  }
+
+  .loggin, .createAccount {
+    grid-template-columns: 1fr;
+  }
+
+  .loginSide, .signInSide {
+    padding: 65px 65px 50px 65px;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1200px) {
+  .loggin, .createAccount {
+    grid-template-columns: 1fr;
+    max-width: 800px;
+    margin-top: 10vh;
+    margin-bottom: 100px;
+  }
+
+  .introAccountPage {
+    padding: 120px 80px;
+  }
+
+  .loginSide, .signInSide {
+    padding: 80px 80px 60px 80px;
+  }
+}
+
+
+
+
+
+
+
+/* Inner page */
+@media (max-width: 599px) {
+  .gameBackground {
+    height: 100%;
+    width: 100%;
+  }
+
+  .gameTitleContainer {
+    margin-bottom: 0px;
+  }
+
+  .navbar {
+    flex-direction: column;
+  }
+
+  .navbarLeft,
+  .navbarRight {
+    display: none;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .navbarRight {
+   border-bottom: 1px solid gray;
+  }
+
+  .navbarScroll {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+  }
+
+  .displayOptionsButton,
+  .removeOptionsButton {
+    padding: 15px 22px;
+    background-color: transparent;
+    border: none;
+    color: rgb(122,105,211);
+    font-size: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    border-bottom: solid gray 1px;
+    cursor: pointer;
+  }
+
+  .displayOptionsButton:hover,
+  .removeOptionsButton:hover {
+    background-color: rgb(221, 214, 255);
+  }
+
+  .removeOptionsButton {
+    display: none;
+  }
+
+  .loggOutButton, 
+  .accountButton, 
+  .sourceButton,
+  .leaderButton,
+  .tutorialButton,
+  .settingsButton {
+    width: 100%;
+    height: 70px;
+    flex-direction: row; 
+    justify-content: space-between;
+    padding: 0px 20px;
+  }
+
+  .gameTitle,
+  .gameTimer {
+    font-size: 30px;
+  }
+
+  .gameAreaContainer{
+    flex-direction: column;
+  }
+
+  .gameBoardContainer {
+    height: 100%;
+  }
+
+  .gameButtonsContainer {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .gameButton {
+    margin: 0px 0px 30px 0px;
+  }
+  
+  .innerPage {
+    min-height: 100vh;
+    height: 100%;
+  }
+
+  .modalContent {
+    margin: auto;
+    border: none;
+    width: 100%;
+    min-height: 100%;
+    margin-bottom: 0px;
+    padding: 35px 40px;
+  }
+
+  .accountModal, 
+  .editAccountModal, 
+  .successModal,
+  .sourceModal,
+  .leaderboardModal,
+  .settingsModal,
+  .tutorialModal, 
+  .winningModal,
+  .loosingModal {
+    padding-top: 0px
+  }
+
+  /* Settings */
+  .settingsExplenation {
+    font-size: 15px;
+    padding: 0px 15px 0px 0px;
+  }
+  
+  .minePrecentage {
+    font-size: 13px;
+    padding: 0px 0px 0px 4px;
+  }
+  
+  .minefieldSize {
+    font-size: 13px;
+    padding: 0px 0px 0px 4px;
+  }
+
+  .setChangesSettings {
+    margin-top: 30px;
+    padding: 4px 30px;    
+  }
+  
+  .accountInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    text-align: start;
+  }
+
+  .accountInfoSpan {
+    text-decoration: underline;
+    line-height: 30px;
+  }
+
+  .accountButtonLine{
+    text-align: start;
+  }
+  
+  .setNewAccountDetails{
+    padding: 4px 15px;
+    font-size: 15px;
+    margin-right: 20px;
+  }
+
+  .secondCloseEditAccountBtn {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 799px) {
+  .gameBackground {
+    height: 100%;
+    width: 100%;
+  }
+
+  .gameTitleContainer {
+    margin-bottom: 0px;
+    border-bottom: dotted gray 1px;
+  }
+
+  .navbarLeft,
+  .navbarRight {
+    display: flex;
+  }
+
+  .gameAreaContainer{
+    flex-direction: column;
+  }
+
+  .gameBoardContainer {
+    height: 100%;
+  }
+
+  .gameButtonsContainer {
+    flex-direction: row;    
+  }
+
+  .modalContent {
+    margin: auto;
+    border: none;
+    width: 100%;
+    min-height: 100%;
+    margin-bottom: 0px;
+  }
+
+  .accountModal, 
+  .editAccountModal, 
+  .successModal,
+  .sourceModal,
+  .leaderboardModal,
+  .settingsModal,
+  .tutorialModal,
+  .winningModal,
+  .loosingModal {
+    padding-top: 0px
+  }
+}
+
+@media (min-width: 800px) and (max-width: 1000px) {
+  .gameBackground {
+    width: 85%;
+  }
+}

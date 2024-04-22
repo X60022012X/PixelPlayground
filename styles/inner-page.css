@@ -1,5 +1,6 @@
 .innerPage {
   display: none;
+  flex-direction: column;
   width: 100vw;
   height: 100vh;
   background: linear-gradient(135deg, rgb(124,107,235), rgb(251,130,126));
@@ -25,8 +26,8 @@
 .accountButton, 
 .sourceButton,
 .leaderButton,
-.pauseButton,
-.playButton {
+.tutorialButton,
+.settingsButton {
   height: 100%;
   aspect-ratio: 1 / 0.8;
   display: flex;
@@ -39,14 +40,15 @@
   border: none;
   color: rgb(122,105,211);
   font-size: 30px;
+  cursor: pointer;
 }
 
 .loggOutButton:hover, 
 .accountButton:hover,
 .sourceButton:hover,
 .leaderButton:hover,
-.pauseButton:hover,
-.playButton:hover {
+.tutorialButton:hover,
+.settingsButton:hover {
   background-color: rgb(221, 214, 255);
 }
 
@@ -55,26 +57,38 @@
   padding-top: 10px;
 }
 
-.pauseButton {
-  display: none;
-}
-
-
 .navbarOptionText {
   font-size: 12px;
   font-weight: 600;
   color: rgb(52, 37, 124);
 }
 
+.navbarScroll {
+  display: none;
+}
+
 
 /* General modal */
 
-.accountTitleLine {
+.modalContent {
+  background-color: rgb(250, 247, 253);
+  margin: auto;
+  padding: 45px 65px;
+  border: 1px solid #888;
+  width: 75%;
+  margin-bottom: 45px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: start;
 }
 
-.accountTitle {
+.modalTitleLine {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.modalTitle {
   font-size: 40px;
   font-weight: 500;
   margin-bottom: 10px;
@@ -82,9 +96,13 @@
 
 .accountModal, 
 .editAccountModal, 
-.successAccountModal,
-.leaderboardAccountModal,
-.sourceAccountModal {
+.successModal,
+.sourceModal,
+.leaderboardModal,
+.settingsModal,
+.tutorialModal,
+.winningModal,
+.loosingModal{
   display: none; 
   position: fixed;
   z-index: 1;
@@ -97,22 +115,15 @@
   background-color: rgba(0,0,0,0.4);
 }
 
-.accountModalContent,
-.editAccountModalContent,
-.successAccountModalContent {
-  background-color: rgb(250, 247, 253);
-  margin: auto;
-  padding: 45px 65px;
-  border: 1px solid #888;
-  width: 80%;
-  margin-bottom: 45px;
-}
-
-.closeAccountModal,
-.closeEditAccountModal,
-.closeSuccessAccountModal,
-.closeLeaderboardAccountModal,
-.closeSourceAccountModal {
+.closeAccountBtn,
+.closeEditAccountBtn,
+.closeSuccessBtn,
+.closeLeaderboardBtn,
+.closeSourceBtn,
+.closeSettingsBtn,
+.closeTutorialBtn,
+.closeWinningBtn,
+.closeLoosingBtn {
   color: rgb(122,105,211);
   font-size: 25px;
   font-weight: bold;
@@ -121,43 +132,35 @@
   padding: 9px 11px 7px 11px;
   margin-top: -20px;
   margin-right: -20px;
+  cursor: pointer;
 }
 
-.closeAccountModal:hover,
-.closeEditAccountModal:hover,
-.closeSuccessAccountModal:hover,
-.closeLeaderboardAccountModal:hover,
-.closeSourceAccountModal:hover {
+.closeAccountBtn:hover,
+.closeEditAccountBtn:hover,
+.closeSuccessBtn:hover,
+.closeLeaderboardBtn:hover,
+.closeSourceBtn:hover,
+.closeSettingsBtn:hover,
+.closeTutorialBtn:hover,
+.closeWinningBtn:hover,
+.closeLoosingBtn:hover {
   color: rgb(73, 65, 127);;
 }
 
-.enterFirstTime,
-.setNewAccountDetails{
-  padding: 4px 40px;
-  font-size: 17px;
-  margin-right: 40px;
-  background: linear-gradient(45deg, rgb(251,130,126), rgb(124,107,235));
-  border: none;
-  color: white;
-  border-radius: 18.75px;
-  transition: box-shadow 150ms, 
-margin 150ms;
-}
 
-.enterFirstTime:hover,
-.setNewAccountDetails:hover {
-  background: linear-gradient(45deg, rgb(248, 112, 107), rgb(106, 86, 235));
-}
 
-.enterFirstTime:active,
-.setNewAccountDetails:active {
-  background: linear-gradient(45deg, rgb(251,130,126), rgb(124,107,235));
-}
+
 
 /* Account modal*/
 
-.closeAccountModal:hover {
-  color: rgb(73, 65, 127);;
+.accountInfo {
+  font-size: 20px;
+  margin: 20px 0px 0px 0px;
+}
+
+.accountInfoSpan {
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .editAccountInfo {
@@ -166,8 +169,9 @@ margin 150ms;
   font-size: 15px;
   font-weight: bold;
   color: rgb(73, 65, 127);
-  margin-top: 15px;
+  margin-top: 35px;
   margin-bottom: 1.5px;
+  cursor: pointer;
 }
 
 .editAccountInfo:hover{
@@ -178,26 +182,18 @@ margin 150ms;
   color: rgb(59, 51, 109);
 }
 
-.accountInfo {
-  font-size: 20px;
-  margin: 25px 0px;
-}
-
-.accountInfoSpan {
-  font-size: 20px;
-  margin: 10px 0px;
-  font-weight: 600;
-}
 
 
 
 
 /* Edit account modal*/
-
 .accountInfoLable {
   display: flex;
   flex-direction: column;
+  align-items: start;
   margin-top: 40px;
+  width: 100%;
+
 }
 
 .currentEmail-Password{
@@ -216,6 +212,7 @@ margin 150ms;
   font-size: 16px;
   border-width: 1px;
   background: rgb(224, 222, 251);
+  width: 100%
 }
 
 .newEmail-Password::placeholder{
@@ -228,16 +225,36 @@ margin 150ms;
   margin-top: 55px;
 }
 
-.closeEditAccountModalBtn{
+.setNewAccountDetails{
+  padding: 4px 40px;
+  font-size: 17px;
+  margin-right: 80px;
+  background: linear-gradient(45deg, rgb(251,130,126), rgb(124,107,235));
+  border: none;
+  color: white;
+  border-radius: 18.75px;
+  cursor: pointer;
+}
+
+.setNewAccountDetails:hover {
+  background: linear-gradient(45deg, rgb(248, 112, 107), rgb(106, 86, 235));
+}
+
+.setNewAccountDetails:active {
+  background: linear-gradient(45deg, rgb(251,130,126), rgb(124,107,235));
+}
+
+.secondCloseEditAccountBtn {
   border: none;
   background-color: transparent;
   font-size: 15px;
   font-weight: bold;
   margin-right: 5px;
   color: rgb(59, 51, 109);
+  cursor: pointer;
 }
 
-.closeEditAccountModalBtn:hover{
+.secondCloseEditAccountBtn:hover{
   color: rgb(106, 93, 189);
 }
 
@@ -246,8 +263,10 @@ margin 150ms;
 }
 
 
-/* success account modal*/
 
+
+
+/* Success */
 .confirmNewUsername {
   margin-top: 50px;
 }
@@ -257,31 +276,46 @@ margin 150ms;
   font-weight: 500;
   margin-top: 25px;
   margin-bottom: 40px;
+  text-align: start;
 }
+
+.enterFirstTime {
+  padding: 4px 40px;
+  font-size: 17px;
+  margin-right: 80px;
+  background: linear-gradient(45deg, rgb(251,130,126), rgb(124,107,235));
+  border: none;
+  color: white;
+  border-radius: 18.75px;
+  transition: 
+    box-shadow 150ms, 
+  margin 150ms;
+}
+
+.enterFirstTime:hover {
+  background: linear-gradient(45deg, rgb(248, 112, 107), rgb(106, 86, 235));
+}
+
+.enterFirstTime:active {
+  background: linear-gradient(45deg, rgb(251,130,126), rgb(124,107,235));
+}
+
 
 
 
 
 /*  Leaderboard  */
-
-.leaderAccountModalContent {
-  background-color: rgb(255, 255, 255);
-  margin: auto;
-  padding: 45px 65px;
-  border: 1px solid #888;
-  width: 80%;
-}
-
-.leaderboardTitle {
-  font-size: 30px;
-  margin-bottom: 20px;
+.leaderboardUsersTableModal{
+  margin-top: 10px;
+  background: linear-gradient(-35deg, rgb(251,130,126), rgb(124,107,235));
+  width: 100%;
 }
 
 .leaderboardUsers {
   display: grid;
   grid-template-columns: 45px 1fr;
   margin-bottom: 5px;
-  outline: 2.5px white solid;
+  outline: 2.5px rgb(250, 247, 253) solid;
 }
 
 .leaderboardUsersPosition,
@@ -293,7 +327,7 @@ margin 150ms;
   background-color: transparent;
   font-family: "Noto Sans Mono";
   padding-left: 5px;
-  outline: 5px white solid;
+  outline: 5px rgb(250, 247, 253) solid;
   font-size: 20px;
 }
 
@@ -305,7 +339,7 @@ margin 150ms;
   margin: 0px 0px 0px 10px;
   padding: 0px 8px 0px 8px;
   background-color: transparent;
-  outline: 5px white solid;
+  outline: 5px rgb(250, 247, 253) solid;
   font-size: 20px;
 }
 
@@ -320,7 +354,7 @@ margin 150ms;
 .fa-arrows-up-down {
   font-size: 30px;
   margin-bottom: 4px;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(250, 247, 253);
   padding: 1px 100% 2px 0px;
 }
 
@@ -334,15 +368,29 @@ margin 150ms;
   font-family: "Noto Sans Mono";
 }
 
-.leaderboardUsersTableModal{
-  background: linear-gradient(-35deg, rgb(251,130,126), rgb(124,107,235));
-}
+
 
 
 
 /* Sources */
+.sourceCodeArea {
+  margin-bottom: 50px;
+  width: 100%;
+}
 
-.sourceList{
+.soruceInfoArea{
+  width: 100%;
+}
+
+.sourceTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  text-align: start;
+}
+
+.sourceList {
   display: grid;
   grid-template-columns: 1fr 1fr;
   outline: 1.5px rgb(0, 0, 0) solid;
@@ -360,13 +408,339 @@ margin 150ms;
   font-weight: 600;
 }
 
-.sourceTitle {
-  font-size: 20px;
-  font-weight: 600;
-  margin-top: 20px;
-  margin-bottom: 5px;
+
+
+
+
+/* Settings */
+.settingsContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex-direction: column;
+  text-align: start;
 }
 
-.sourceCodeArea {
-  margin-bottom: 50px;
+.settingsExplenation {
+  padding: 0px 20px 0px 0px;
+  margin-top: 20px;
+  font-size: 18px;
 }
+
+.minePrecentage {
+  margin-top: 20px;
+  font-size: 15px;
+  color: rgb(122,105,211);
+  border: 1px solid rgb(96, 80, 197);
+  border-radius: 3px;
+  font-weight: 500;
+  padding: 2px 2px 2px 8px;
+  height: 30px;
+  border-width: 1px;
+  background: rgb(224, 222, 251);
+  max-width: 400px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.minefieldSize {
+  margin-top: 20px;
+  font-size: 15px;
+  color: rgb(122,105,211);
+  border: 1px solid rgb(96, 80, 197);
+  border-radius: 3px;
+  font-weight: 500;
+  padding: 2px 2px 2px 8px;
+  height: 30px;
+  border-width: 1px;
+  background: rgb(224, 222, 251);
+  max-width: 400px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.setChangesSettings {
+  margin-top: 40px;
+  padding: 4px 40px;
+  font-size: 17px;
+  margin-right: 80px;
+  background: linear-gradient(45deg, rgb(251,130,126), rgb(124,107,235));
+  border: none;
+  color: white;
+  border-radius: 18.75px;
+  cursor: pointer;
+}
+
+.setChangesSettings:hover {
+  background: linear-gradient(45deg, rgb(248, 112, 107), rgb(106, 86, 235));
+}
+
+.setChangesSettings:active {
+  background: linear-gradient(45deg, rgb(251,130,126), rgb(124,107,235));
+}
+
+
+/* Tutorial */
+.tutorialBox {
+  margin-top: 20px;
+  text-align: start;
+}
+
+.tutorialPoint {
+  margin-bottom: 40px;
+}
+
+.tutorialPointParagraph {
+  margin-left: 15px;
+}
+
+.tutorialPointTitle {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.tutorialPointList {
+  margin-left: 20px;
+}
+
+.tutorialUnderline {
+  text-decoration: underline;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+
+
+
+
+/* Winning */
+.gameDetails, 
+.newHighscore,
+.notNewHighscore {
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+
+.newHighscore,
+.notNewHighscore {
+  display: none;
+}
+
+.gameWonTitle {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.setNewHighscore,
+.tryGameAgian {
+  background-color: black;
+  margin-top: 40px;
+  padding: 4px 40px;
+  font-size: 17px;
+  background: linear-gradient(45deg, rgb(251,130,126), rgb(124,107,235));
+  border: none;
+  color: white;
+  border-radius: 18.75px;
+  cursor: pointer;
+}
+
+.setNewHighscore:hover,
+.tryGameAgian:hover {
+  background: linear-gradient(45deg, rgb(248, 112, 107), rgb(106, 86, 235));
+}
+
+.setNewHighscore:active,
+.tryGameAgian:active {
+  background: linear-gradient(45deg, rgb(251,130,126), rgb(124,107,235));
+}
+
+
+
+
+
+/* Loosing */
+
+.loosingNotNewHighscore{
+  text-align: start;
+}
+
+.lossTryGameAgian {
+  background-color: black;
+  margin-top: 40px;
+  padding: 4px 40px;
+  font-size: 17px;
+  background: linear-gradient(45deg, rgb(251,130,126), rgb(124,107,235));
+  border: none;
+  color: white;
+  border-radius: 18.75px;
+  cursor: pointer;
+}
+
+
+
+
+
+/* Game */
+.gameContainer {
+  background-color: transparent;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gameBackground {
+  background-color: transparent;
+  height: 90%;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+.gameTitleContainer {
+  background-color: rgb(224, 222, 251);
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px 10px 20px;
+  margin-bottom: 10px;
+}
+
+.gameTitle {
+  font-size: 40px;
+}
+
+.gameTimer {
+  font-size: 40px;
+  letter-spacing: 4px;
+  padding: 0px 10px;
+  line-height: none;
+  border: solid;
+  display: inline;
+  font-family: "Noto Sans Mono";
+}
+
+.gameAreaContainer{
+  background-color: rgb(224, 222, 251);
+  display: flex;
+  height: 100%;
+  padding: 30px;
+}
+
+.gameButtonsContainer {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  
+}
+
+.gameButton {
+  width: 80px;
+  height: 80px;
+  margin: 0px 30px 30px 0px;
+  font-weight: 500;
+  color: rgb(1, 1, 1);
+  font-size: 14px;
+  background-color: lightgray;
+  border: solid 1px rgb(105, 85, 209);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.gameButton:hover{
+  background-color: rgb(152, 152, 152);
+  border-width: 2px;
+}
+
+.gameButton:active {
+  background-color: lightgray;
+}
+
+
+.gameButton > i {
+  font-size: 25px;
+  color: rgb(105, 85, 209);
+}
+
+.gameButton > p {
+  margin-top: 5px;
+  font-size: 14px;
+  color: rgb(105, 85, 209);
+}
+
+.activeGameBtn {
+  background-color: lightgray;
+  color: white;
+  font-weight: 700;
+  border: solid 3.5px rgb(105, 85, 209);
+}
+
+.activeGameBtn:hover{
+  background-color: lightgray;
+  border-width: 2px;
+}
+
+.activeGameBtn:active {
+  background-color: lightgray;
+}
+
+.refreshGame {
+  width: 80px;
+  height: 80px;
+  margin: 0px 0px 30px 0px;
+  font-weight: 500;
+  color: rgb(1, 1, 1);
+  font-size: 14px;
+  background-color: rgb(250, 247, 253);
+  border: solid 1px black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.refreshGame:hover {
+  border-width: 2px;
+background-color: rgb(238, 226, 250);
+}
+
+.refreshGame > i {
+  font-size: 30px;
+  color: rgb(105, 85, 209);
+}
+
+.refreshGame > p {
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgb(105, 85, 209);
+}
+
+.gameBoardContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.verticalDividor {
+  width: 1px;
+  background-color: black;
+  height: 100%;
+  margin: auto;
+}
+
+.horisontalDividor {
+  width: 100%;
+  background-color: black;
+  height: 1px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
