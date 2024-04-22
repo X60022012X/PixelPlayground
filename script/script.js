@@ -223,9 +223,9 @@ auth.onAuthStateChanged(user => {
 			board[row][col].revealed = true;
 
 			if (board[row][col].isMine) {
-				gameLost()
+				delayedGameLost()
 			} else if (minesMarked == numMines && emptyCellsRevealed == ((numRows * numCols) - numMines - 1)) {
-				gameWon()
+				delayedGameWon()
 			} else if (board[row][col].count === 0) {
 				emptyCellsRevealed++;
 				for (let dx = -1; dx <= 1; dx++) {
@@ -255,7 +255,7 @@ auth.onAuthStateChanged(user => {
 			} 
 			
 			if (minesMarked == numMines && emptyCellsRevealed == ((numRows * numCols) - numMines)) {
-				gameWon()
+				delayedGameWon()
 			}
 			renderBoard();
 		}
@@ -291,6 +291,10 @@ auth.onAuthStateChanged(user => {
 				}
 				gameBoard.appendChild(document.createElement("br"));
 			}
+		}
+
+		function delayedGameWon(){
+			setTimeout(gameWon, 500); 
 		}
 
 		function gameWon(){
@@ -364,6 +368,10 @@ auth.onAuthStateChanged(user => {
 				}
 			})
 
+		}
+
+		function delayedGameLost(){
+			setTimeout(gameLost, 500); 
 		}
 
 		function gameLost(){
