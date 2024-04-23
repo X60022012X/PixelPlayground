@@ -395,7 +395,7 @@ auth.onAuthStateChanged(user => {
 				loosingHighscore.innerHTML = `Highscore: ${doc.data().higscore}`
 
 				let loosingScore = document.querySelector(".loosingScore");
-				loosingScore.innerHTML = `Score: ${score}`
+				loosingScore.innerHTML = `Score: 0`
 			})
 			
 			let minefieldSizeText;
