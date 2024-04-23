@@ -493,8 +493,13 @@ auth.onAuthStateChanged(user => {
 			}
 		})
 
+  } else {
+    document.querySelector('.accountPage').style.display = 'flex';
+    document.querySelector('.innerPage').style.display = 'none'; 
+    document.querySelector('.loggin').classList.add('showMain')
+  }
 
-		/* XXXXXXXXXXXXXXXXXXXXXXX */
+	/* XXXXXXXXXXXXXXXXXXXXXXX */
 		/* Create account  */
 		let createAccountButton = document.querySelector('.createAccountButton')
 
@@ -571,11 +576,6 @@ auth.onAuthStateChanged(user => {
 				})
 			}
 		})
-  } else {
-    document.querySelector('.accountPage').style.display = 'flex';
-    document.querySelector('.innerPage').style.display = 'none'; 
-    document.querySelector('.loggin').classList.add('showMain')
-  }
 })
 
 
